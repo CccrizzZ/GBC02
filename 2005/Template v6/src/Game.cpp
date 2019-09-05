@@ -33,7 +33,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 
 	// initialize SDL
-	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
+	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0) 
 	{
 		std::cout << "SDL Init success" << std::endl;
 
