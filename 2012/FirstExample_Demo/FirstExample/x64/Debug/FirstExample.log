@@ -1,0 +1,11 @@
+﻿  LoadShaders.cpp
+  Triangles.cpp
+c:\users\crizz\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(97): warning C4101: 'temp': unreferenced local variable
+c:\users\crizz\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(133): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\crizz\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(140): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+Debug\LoadShaders.obj : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'

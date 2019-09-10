@@ -90,31 +90,38 @@ void idle()
 	glutPostRedisplay();
 }
 
-glm::mat3 Mat4Trim(glm::mat4 input, int r, int c) {
-	glm::mat4 inputs;
-	glm::mat3 result;
-
+glm::mat3 Mat4Trim(glm::mat4 &input, int r, int c) {
+	// temporary 3x3 matrix
+	glm::mat3 tempMtx;
+	// temporary 2d list
 	int temp[16];
 
+	// fill the temp list with input 4x4 matrix except for row r and column c
+	int counter = 0;
 	for (int i = 0; i < input.length(); i++)
 	{
 		for (int j = 0; j < input.length(); j++)
 		{
-			
+			if (j != c && i != r)
+			{
+				temp[counter] = input[i][j];
+				counter++;
+			}
 		}
 	}
 
-	for (int i = 0; i < result.length() ; i++)
+	//  fill the result matrix with the temp list
+	int counter2 = 0;
+	for (int i = 0; i < tempMtx.length(); i++)
 	{
-		for (int j = 0; j < result.length(); j++)
+		for (int j = 0; j < tempMtx.length(); j++)
 		{
-			cout << result[i][j];
+			tempMtx[i][j] = temp[counter2];
+			counter2++;
 		}
-		cout << "\n";
 	}
-
-	return result;
-
+	
+	return tempMtx;
 }
 
 
@@ -127,11 +134,11 @@ glm::mat3 Mat4Trim(glm::mat4 input, int r, int c) {
 int
 main(int argc, char** argv)
 {
-
+	// init 4x4 matrix
 	glm::mat4 testmat = glm::mat4(1.0);
-
+	// Rand
 	srand(time(NULL));
-
+	// fill this matrix with random numbers
 	for (int i = 0; i < testmat.length(); i++)
 	{
 		for (int j = 0; j < testmat.length(); j++)
@@ -141,7 +148,7 @@ main(int argc, char** argv)
 		}
 	}
 
-
+	// print this 4x4 matrix
 	for (int i = 0; i < testmat.length(); i++)
 	{
 		for (int j = 0; j < testmat.length(); j++)
@@ -151,16 +158,38 @@ main(int argc, char** argv)
 		cout << '\n';
 	}
 	
-	int delRow;
-	int delCol;
 
+	// rows and column
+	int delRow = 0;
+	int delCol = 0;
+
+	// input for row and column
 	cout << "deleting row:" ;
 	cin >> delRow;
+	delRow--;
 
 	cout << "deleting column:";
 	cin >> delCol;
+	delCol--;
 
-	Mat4Trim(testmat, delRow, delCol);
+	// init 3x3 matrix
+	glm::mat3 resultMtx = Mat4Trim(testmat, delRow, delCol);
+
+	// print result 3x3 matrix
+	for (int i = 0; i < resultMtx.length(); i++)
+	{
+		for (int j = 0; j < resultMtx.length(); j++)
+		{
+			cout << resultMtx[i][j];
+		}
+		cout << "\n";
+	}
+
+
+
+
+
+
 
 
 

@@ -1,9 +1,18 @@
 ﻿  Triangles.cpp
-c:\users\101193350\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(97): warning C4101: 'temp': unreferenced local variable
-c:\users\101193350\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(133): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\101193350\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(140): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+c:\users\crizz\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(107): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-  FirstExample.vcxproj -> C:\Users\101193350\Desktop\GBC02\2012\FirstExample_Demo\Debug\FirstExample.exe
+c:\users\crizz\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(119): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(140): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\crizz\desktop\gbc02\2012\firstexample_demo\firstexample\triangles.cpp(147): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  FirstExample.vcxproj -> C:\Users\crizz\Desktop\GBC02\2012\FirstExample_Demo\Debug\FirstExample.exe
