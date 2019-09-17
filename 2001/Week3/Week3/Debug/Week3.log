@@ -1,0 +1,5 @@
+﻿main.obj : error LNK2005: "int __cdecl doubleFactorial(int)" (?doubleFactorial@@YAHH@Z) already defined in Factorial.obj
+main.obj : error LNK2005: "int __cdecl factorial(int)" (?factorial@@YAHH@Z) already defined in Factorial.obj
+Trinumloop.obj : error LNK2005: "int __cdecl TriNum(int)" (?TriNum@@YAHH@Z) already defined in main.obj
+Trinumloop.obj : error LNK2005: "int __cdecl TriNumRecursion(int)" (?TriNumRecursion@@YAHH@Z) already defined in main.obj
+C:\Users\101193350\Desktop\Week3\Debug\Week3.exe : fatal error LNK1169: one or more multiply defined symbols found

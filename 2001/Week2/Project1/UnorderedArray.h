@@ -18,6 +18,9 @@ public:
     if (size)
     {
       m_maxSize = size;
+	  m_array = new T[m_maxSize];
+	  memset(m_array, 0, sizeof(T) * m_maxSize);
+	  m_growSize = ((growBy > 0) ? growBy : 0);
     }
   }
 
@@ -26,7 +29,8 @@ public:
   {
     if (m_array != NULL)
     {
-      delete[]
+		delete[] m_array;
+		m_array = NULL;
     }
   }
 
@@ -37,7 +41,7 @@ public:
     assert(m_array != NULL);
     if (m_numElements >= m_maxSize)
     {
-      // Expand();
+		Expand();
     }
     m_array[m_numElements] = val;
     m_numElements++;
@@ -61,7 +65,7 @@ public:
   // Remove an index from the array by overriding the index to delete
   void Remove(int index)
   {
-    assert(m_array != NULL)
+	  assert(m_array != NULL);
     if (index >= m_numElements)
     {
       return;
@@ -131,7 +135,7 @@ public:
   // Set functions
   void setGrowSize(int val)
   {
-    assert(vall <= 0); // Debug
+    assert(val <= 0); // Debug
     m_growSize = val;
   }
 

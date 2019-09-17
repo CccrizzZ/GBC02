@@ -15,6 +15,8 @@ public:
 		{
 			m_array = new T[m_maxSize];
 			memset(m_array, 0, sizeof(T) * m_maxSize);
+			m_growSize = ((growBy > 0) ? growBy : 0);
+
 		}
 	}
 
@@ -64,6 +66,7 @@ public:
 
 
 	// Deletion (2 methods)
+
 	// Pop
 	// Remove last item that was iterated
   void Pop()
@@ -79,7 +82,7 @@ public:
   // Remove an index from the array by overriding the index to delete
   void Remove(int index)
   {
-    assert(m_array != NULL)
+	  assert(m_array != NULL);
     if (index >= m_numElements)
     {
       return;
@@ -148,10 +151,33 @@ public:
 
 
 	// Clear
+	void Clear() 
+	{
+		m_numElements = 0;
+	}
 
 	// Getter
+	int getSize() 
+	{
+		return m_numElements;
+	}
+
+	int getMaxSize() 
+	{
+		return m_maxSize;
+	}
+
+	int getGrowSize() 
+	{
+		return m_growSize;
+	}
 
 	// Setter
+	void setGrowSize(int val) 
+	{
+		assert(val >= 0);
+		m_growSize = val;
+	}
 
 private:
 	// Expand
