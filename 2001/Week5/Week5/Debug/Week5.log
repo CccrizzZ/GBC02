@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\101193350\desktop\gbc02\2001\week5\week5\linklist.h(156): error C2760: syntax error: unexpected token 'identifier', expected ';'
+  c:\users\101193350\desktop\gbc02\2001\week5\week5\linklist.h(212): note: see reference to class template instantiation 'LinkList<T>' being compiled
