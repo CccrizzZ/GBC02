@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\101193350\desktop\week6\week6\stack.h(112): warning C4715: 'Stack<int>::Expand': not all control paths return a value
+  Week6.vcxproj -> C:\Users\101193350\Desktop\Week6\Debug\Week6.exe
