@@ -5,11 +5,11 @@ layout(location = 1) in vec3 vertex_color;
 out vec3 myColor;
 
 // Values that stay constant for the whole mesh
-uniform mat4 MVP;
+uniform mat4 model;
 
 void main()
 {
 	myColor = vertex_color;
-	gl_Position = MVP * vec4(vertex_position, 1.0f);
+	gl_Position = model * vec4(vertex_position, 1.0f);
 
 }
