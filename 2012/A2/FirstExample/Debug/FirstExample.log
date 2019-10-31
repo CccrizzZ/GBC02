@@ -1,6 +1,7 @@
-﻿  LoadShaders.cpp
-  LB-101193350-Assignment2.cpp
+﻿  LB-101193350-Assignment2.cpp
+  LoadShaders.cpp
   Generating Code...
+  LINK : C:\Users\101193350\Desktop\GBC02\2012\A2\Debug\FirstExample.exe not found or not built by the last incremental link; performing full link
 Debug\LoadShaders.obj : warning LNK4042: object specified more than once; extras ignored
 MSVCRTD.lib(initializers.obj) : warning LNK4098: defaultlib 'libcmtd.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
 glew_static_vs2010_d.lib(glew.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'glew_static_vs2010_d.lib(glew.obj)' or at 'C:\Users\101193350\Desktop\GBC02\2012\A2\Debug\vc100.pdb'; linking object as if no debug info
