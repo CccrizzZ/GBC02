@@ -69,8 +69,7 @@ void init(void)
 	glUseProgram(program);	//My Pipeline is set up
 
 
-	glGenVertexArrays(1, &gVAO);
-	glBindVertexArray(gVAO);
+
 
 	modelID = glGetUniformLocation(program, "mvp");
 
@@ -86,32 +85,53 @@ void init(void)
 
 	// SOIL textures
 	GLfloat textureCoordinates[] ={
-		0.0f, 1.0f,
-		1.0f, 1.0f,
-		1.0f, 0.0f,
-		0.0f, 0.0f,
-		0.0f, -1.0f,
-		-1.0f, -1.0f,
-		-1.0f, 0.0f,
-		0.0f, 0.0f
+
+		// 0.0f, 0.55f, // 0
+		// 0.55f, 0.55f, // 1
+		// 0.55f, 0.0f,	// 2
+		// 0.0f, 0.0f, // 3
+
+		0.25f, 0.333f, // 0
+		0.5f, 0.333f, // 1
+		0.5f, 0.666f, // 2
+		0.25, 0.666f, // 3
+
+
+		0.25f, 0.333f, // 0
+		0.5f, 0.333f, // 1
+		0.5f, 0.666f, // 2
+		0.25, 0.666f, // 3
+
+
+
+
+
 		
-		
+
+
 	};
 
 	GLushort cube_index_array[] = {
-		// Front.
-		3, 2, 1, 0, 
-		// Left.
-		0, 3, 7, 4,
-		// Bottom.
-		4, 0, 1, 5,
-		// Right.
-		5, 1, 2, 6,
-		// Back.
-		6, 5, 4, 7,
-		// Top.
-		7, 6, 2, 3
+		// front
+		0,1,2,3,
+		// back
+		4,5,6,7,
+		// top
+		4,5,1,0,
+		// bot
+		2,3,7,6,
+		// left
+		2,6,5,1,
+		// right
+		0,4,7,3
 	};
+
+
+
+
+
+
+
 
 	// Cube indicies
 	GLshort cube_indices[] = {
@@ -257,7 +277,7 @@ display(void)
 {
 	view = glm::lookAt(
 		glm::vec3(posX, posY, posZ),		// Camera pos in World Space
-		glm::vec3(posX, posY, 0),		// and looks at the origin
+		glm::vec3(0, 0, 0),		// and looks at the origin
 		glm::vec3(0, 1, 0)		// Head is up (set to 0,-1,0 to look upside-down)
 	);
 
@@ -270,30 +290,6 @@ display(void)
 	// Set Camera Projection
 	projection = glm::perspective(30.0f, (GLfloat)1.0f, 1.0f, 50.0f);
 
-	// bool flag = true;
-	// for (int i = 0; i < numCube; i++)
-	// {
-	// 	// Second cube
-	// 	if (flag==true)
-	// 	{
-	// 		glBindVertexArray(gVAO);
-	// 		// Set cube transforamtion
-	// 		transformObject(0.3f, YZ_AXIS, rotAngle += 1.0f, glm::vec3(0.0f, i * -2.0f, 0.0f));
-	// 		// Draw cube
-	// 		glDrawElements(GL_QUADS, 24, GL_UNSIGNED_SHORT, 0);
-	// 	}
-	// 	else
-	// 	{
-	// 		glBindVertexArray(gVAO);
-
-	// 		// Set cube transforamtion
-	// 		transformObject(0.3f, YZ_AXIS, rotAngle1 -= 1.0f, glm::vec3(0.0f, i * -2.0f, 0.0f));
-	// 		// Draw cube
-	// 		glDrawElements(GL_QUADS, 24, GL_UNSIGNED_SHORT, 0);
-	// 	}
-	// 	flag = !flag;
-
-	// }
 
 
 	// // Ground
@@ -305,8 +301,8 @@ display(void)
 
 
 	glBindVertexArray(gVAO);
-	transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), YZ_AXIS, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f));
-	glDrawElements(GL_QUADS, 16, GL_UNSIGNED_SHORT, 0);
+	transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), XY_AXIS, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f));
+	glDrawElements(GL_QUADS, 32, GL_UNSIGNED_SHORT, 0);
 
 
 

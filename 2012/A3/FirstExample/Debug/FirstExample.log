@@ -1,27 +1,2 @@
-﻿  LoadShaders.cpp
-  LB-101193350-SOIL.cpp
-  Generating Code...
-Debug\LoadShaders.obj : warning LNK4042: object specified more than once; extras ignored
-MSVCRTD.lib(initializers.obj) : warning LNK4098: defaultlib 'libcmtd.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
-SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\SOIL.pdb'; linking object as if no debug info
-SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\SOIL.pdb'; linking object as if no debug info
-SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\SOIL.pdb'; linking object as if no debug info
-SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\SOIL.pdb'; linking object as if no debug info
-glew_static_vs2010_d.lib(glew.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'glew_static_vs2010_d.lib(glew.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_callbacks.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_callbacks.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_cursor.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_cursor.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_display.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_display.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_font.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_font.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_font_data.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_font_data.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_init.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_init.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_input_devices.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_input_devices.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_joystick.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_joystick.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_main.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_main.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_menu.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_menu.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_spaceball.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_spaceball.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_state.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_state.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_stroke_mono_roman.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_stroke_mono_roman.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_stroke_roman.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_stroke_roman.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_structure.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_structure.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
-freeglut_static_vs2010_d.lib(freeglut_window.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'freeglut_static_vs2010_d.lib(freeglut_window.obj)' or at 'C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\vc100.pdb'; linking object as if no debug info
+﻿  LB-101193350-SOIL.cpp
   FirstExample.vcxproj -> C:\Users\crizz\Desktop\GBC02\2012\A3\Debug\FirstExample.exe
