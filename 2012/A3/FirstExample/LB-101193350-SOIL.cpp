@@ -21,6 +21,8 @@ using namespace std;
 #define XY_AXIS glm::vec3(1, 1, 0)
 #define YZ_AXIS glm::vec3(0, 1, 1)
 #define ZX_AXIS glm::vec3(1, 0, 1)
+#define XYZ_AXIS glm::vec3(1, 1, 1)
+
 
 enum VAO_IDs { Triangles, NumVAOs };
 enum Buffer_IDs { ArrayBuffer, NumBuffers };
@@ -28,7 +30,7 @@ enum Attrib_IDs { vPosition = 0 };
 
 
 // Horizontal and vertical ortho offsets.
-float posX, posY, posZ = 12.0f, scrollSpd = 0.25f;
+float posX, posY, posZ = 6.0f, scrollSpd = 0.25f;
 float rotAngle = 0.0f;
 float rotAngle1 = 0.0f;
 
@@ -45,9 +47,7 @@ GLuint colors_vbo;	// Vertex Buffer Object (Colors)
 GLuint modelID;
 GLuint cube_tex_vbo;		// Vertex Array Object
 GLuint cube_tex_ibo;			// Index Buffer Object
-GLuint cube_tex_ibo2;
-GLuint cube_tex_vbo2;
-
+GLuint cube_tex;
 
 // Initiallization Function
 void init(void)
@@ -86,77 +86,102 @@ void init(void)
 
 	// SOIL textures
 	GLfloat textureCoordinates[] ={
-
-		// 0.0f, 0.55f, // 0
-		// 0.55f, 0.55f, // 1
-		// 0.55f, 0.0f,	// 2
-		// 0.0f, 0.0f, // 3
-
+		// FRONT
 		0.25f, 0.333f, // 0
 		0.5f, 0.333f, // 1
 		0.5f, 0.666f, // 2
 		0.25, 0.666f, // 3
 
+		// BACK
+		0.75f, 0.333f, // 0
+		1.0f, 0.333f, // 1
+		1.0f, 0.666f, // 2
+		0.75, 0.666f, // 3
 
-		0.25f, 0.333f, // 0
-		0.5f, 0.333f, // 1
-		0.5f, 0.666f, // 2
-		0.25, 0.666f, // 3
+		// TOP
+		0.25f, 0.0f, // 0
+		0.5f, 0.0f, // 1
+		0.5f, 0.333f, // 2
+		0.25, 0.333f, // 3
 
+		// BOT
+		0.25f, 0.666f, // 0
+		0.5f, 0.666f, // 1
+		0.5f, 1.0f, // 2
+		0.25, 1.0f, // 3
 
+		// RIGHT
+		0.0f, 0.333f, // 0
+		0.25f, 0.333f, // 1
+		0.25f, 0.666f, // 2
+		0.0, 0.666f, // 3
+
+		// LEFT
+		0.5f, 0.333f, // 0
+		0.75f, 0.333f, // 1
+		0.75f, 0.666f, // 2
+		0.5, 0.666f, // 3
 
 
 	};
 
-	GLushort cube_index_array[] = {
+	GLushort cube_indices[] = {
 		// front
 		0,1,2,3,
+
 		// back
 		4,5,6,7,
 
-		// // top
-		// 4,5,1,0,
-		// // bot
-		// 2,3,7,6,
+		// top
+		8,9,10,11,
 
-		// // left
-		// 2,6,5,1,
-		// // right
-		// 0,4,7,3
-	};
+		// bot
+		12,13,14,15,
 
+		// left
+		16,17,18,19,
 
-
-
-
-
-
-	// Cube indicies
-	GLshort cube_indices[] = {
-		// Front.
-		3, 2, 1, 0, 
-		// Left.
-		0, 3, 7, 4,
-		// Bottom.
-		4, 0, 1, 5,
-		// Right.
-		5, 1, 2, 6,
-		// Back.
-		6, 5, 4, 7,
-		// Top.
-		7, 6, 2, 3
+		// right
+		20,21,22,23
 	};
 
 	// Cube verticies
 	GLfloat cube_vertices[] = {
-		-0.9f, -0.9f, 0.9f,		// 0.
-		0.9f, -0.9f, 0.9f,		// 1.
-		0.9f, 0.9f, 0.9f,		// 2.
-		-0.9f, 0.9f, 0.9f,		// 3.
-		-0.9f, -0.9f, -0.9f,	// 4.
-		0.9f, -0.9f, -0.9f,		// 5.
-		0.9f, 0.9f, -0.9f,		// 6.
-		-0.9f, 0.9f, -0.9f,		// 7.
+		// FRONT
+		-0.65f, -0.65f, 0.65f,		// 0.
+		0.65f, -0.65f, 0.65f,		// 1.
+		0.65f, 0.65f, 0.65f,		// 2.
+		-0.65f, 0.65f, 0.65f,		// 3.
+
+		//BACK
+		-0.65f, -0.65f, -0.65f,		// 4.
+		0.65f, -0.65f, -0.65f,		// 5.
+		0.65f, 0.65f, -0.65f,		// 6.
+		-0.65f, 0.65f, -0.65f,		// 7.
+
+		// TOP
+		-0.65f, -0.65f, 0.65f,		// 8.
+		-0.65f, -0.65f, -0.65f,		// 9.
+		0.65f, -0.65f, -0.65f,		// 10.
+		0.65f, -0.65f, 0.65f,		// 11.
+
+		//BOTTOM
+		-0.65f, 0.65f, 0.65f,		// 12.
+		-0.65f, 0.65f, -0.65f,		// 13.
+		0.65f, 0.65f, -0.65f,		// 14.
+		0.65f, 0.65f, 0.65f,		// 15.
+
+		// LEFT
+		-0.65f, -0.65f, -0.65f,		// 16.
+		-0.65f, -0.65f, 0.65f,		// 17.
+		-0.65f, 0.65f, 0.65f,		// 18.
+		-0.65f, 0.65f, -0.65f,   	// 19.
+
+		//RIGHT
+		0.65f, -0.65f, 0.65f,		// 20.
+		0.65f, -0.65f, -0.65f,		// 21.
+		0.65f, 0.65f, -0.65f,		// 22.
+		0.65f, 0.65f, 0.65f,		// 23.
 	};
 
 	// Cube colors
@@ -189,13 +214,6 @@ void init(void)
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(0);
 
-	
-	// generate and bind colors Vertex Buffer Object(VBO)
-	glGenBuffers(1, &colors_vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, colors_vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(cube_colors), cube_colors, GL_STATIC_DRAW);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
-	glEnableVertexAttribArray(1);
 
 
 	// Load image using SOIL
@@ -211,22 +229,18 @@ void init(void)
 	}
 	
 	// Enable and bind texture
-	glActiveTexture(GL_TEXTURE0);
-	GLuint cube_tex = 0;
+	cube_tex = 0;
 	glGenTextures(1, &cube_tex);
 	glBindTexture(GL_TEXTURE_2D, cube_tex);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	SOIL_free_image_data(image);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 0);
 	glUniform1i(glGetUniformLocation(program, "texture0"), 0);
-
-	// generate and bind Index Buffer Object
-	cube_tex_ibo = 0;
-	glGenBuffers(1, &cube_tex_ibo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cube_tex_ibo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cube_index_array), cube_index_array, GL_STATIC_DRAW);
 
 	// Create vbo
 	cube_tex_vbo = 0;
@@ -274,7 +288,7 @@ display(void)
 {
 	view = glm::lookAt(
 		glm::vec3(posX, posY, posZ),		// Camera pos in World Space
-		glm::vec3(0, 0, 0),		// and looks at the origin
+		glm::vec3(posX, posY, 0),		// and looks at the origin
 		glm::vec3(0, 1, 0)		// Head is up (set to 0,-1,0 to look upside-down)
 	);
 
@@ -287,64 +301,23 @@ display(void)
 	// Set Camera Projection
 	projection = glm::perspective(30.0f, (GLfloat)1.0f, 1.0f, 50.0f);
 
+	// First Cube
+	transformObject(1.0f, XYZ_AXIS, rotAngle-=2, glm::vec3(-3.0f, 0.0f, 0.0f));
+	glBindVertexArray(gVAO);
+	glBindTexture(GL_TEXTURE_2D, cube_tex);
+	// Ordering GPU to start the pipeline
+	glDrawElements(GL_QUADS, 36, GL_UNSIGNED_SHORT, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glBindVertexArray(0);
 
-
-	// // Ground
-	// glBindVertexArray(gVAO);
-	// // Set cube transforamtion
-	// transformObject2(glm::vec3(100.0f, 1.0f, 100.0f), YZ_AXIS, 1.0f, glm::vec3(0.0f, 2.0f, 0.0f));
-	// // Draw cube
-	// glDrawElements(GL_QUADS, 24, GL_UNSIGNED_SHORT, 0);
-
-	for (int i = 0; i <= 2; i++)
-	{
-
-		if (i==0)
-		{
-			glBindVertexArray(gVAO);
-			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), XY_AXIS, 1.0f, glm::vec3(3.0f, 0.0f, 0.0f));
-			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
-		}
-		else if (i==1)
-		{
-			glBindVertexArray(gVAO);
-			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), X_AXIS, 90.0f, glm::vec3(3.0f, 0.0f, 0.0f));
-			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
-		}
-		else if (i==2)
-		{
-			glBindVertexArray(gVAO);
-			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), Y_AXIS, 90.0f, glm::vec3(3.0f, 0.0f, 0.0f));
-			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
-		}
-		
-	}
-	
-	for (int i = 0; i <= 2; i++)
-	{
-
-		if (i==0)
-		{
-			glBindVertexArray(gVAO);
-			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), XY_AXIS, 1.0f, glm::vec3(-3.0f, 0.0f, 0.0f));
-			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
-		}
-		else if (i==1)
-		{
-			glBindVertexArray(gVAO);
-			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), X_AXIS, 90.0f, glm::vec3(-3.0f, 0.0f, 0.0f));
-			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
-		}
-		else if (i==2)
-		{
-			glBindVertexArray(gVAO);
-			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), Y_AXIS, 90.0f, glm::vec3(-3.0f, 0.0f, 0.0f));
-			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
-		}
-		
-	}
-
-
+	// Second Cube
+	transformObject(1.0f, XYZ_AXIS, rotAngle1+=2, glm::vec3(3.0f, 0.0f, 0.0f));
+	glBindVertexArray(gVAO);
+	glBindTexture(GL_TEXTURE_2D, cube_tex);
+	// Ordering GPU to start the pipeline
+	glDrawElements(GL_QUADS, 36, GL_UNSIGNED_SHORT, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	glBindVertexArray(0);
 
 
 
@@ -380,7 +353,10 @@ void keyDown(unsigned char key, int x, int y)
 
 }
 
-
+void clean(){
+	std::cout << "Cleaning Up" << std::endl;
+	glDeleteTextures(1, &cube_tex);
+}
 
 void idle()
 {
