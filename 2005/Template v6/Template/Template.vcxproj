@@ -113,11 +113,9 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\include\SDL\include;..\include\GLM\glm\gtc;..\include\GLM\glm\gtx;..\include\GLEW;..\include\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -174,6 +172,7 @@
     <ClCompile Include="..\src\Mine.cpp" />
     <ClCompile Include="..\src\Planet.cpp" />
     <ClCompile Include="..\src\PlayScene.cpp" />
+    <ClCompile Include="..\src\Ramp.cpp" />
     <ClCompile Include="..\src\Scene.cpp" />
     <ClCompile Include="..\src\ship.cpp" />
     <ClCompile Include="..\src\SoundManager.cpp" />
@@ -202,6 +201,7 @@
     <ClInclude Include="..\src\Mine.h" />
     <ClInclude Include="..\src\Planet.h" />
     <ClInclude Include="..\src\PlayScene.h" />
+    <ClInclude Include="..\src\Ramp.h" />
     <ClInclude Include="..\src\Scene.h" />
     <ClInclude Include="..\src\ship.h" />
     <ClInclude Include="..\src\SoundManager.h" />

@@ -28,12 +28,11 @@ enum Attrib_IDs { vPosition = 0 };
 
 
 // Horizontal and vertical ortho offsets.
-float posX, posY, posZ = 2.0f, scrollSpd = 0.25f;
+float posX, posY, posZ = 12.0f, scrollSpd = 0.25f;
 float rotAngle = 0.0f;
 float rotAngle1 = 0.0f;
 
 
-int numCube = 2;
 
 glm::mat4 mvp;
 glm::mat4 view;
@@ -46,7 +45,8 @@ GLuint colors_vbo;	// Vertex Buffer Object (Colors)
 GLuint modelID;
 GLuint cube_tex_vbo;		// Vertex Array Object
 GLuint cube_tex_ibo;			// Index Buffer Object
-
+GLuint cube_tex_ibo2;
+GLuint cube_tex_vbo2;
 
 
 // Initiallization Function
@@ -83,6 +83,7 @@ void init(void)
 		glm::vec3(0, 1, 0)		// Head is up (set to 0,-1,0 to look upside-down)
 	);
 
+
 	// SOIL textures
 	GLfloat textureCoordinates[] ={
 
@@ -105,10 +106,6 @@ void init(void)
 
 
 
-
-		
-
-
 	};
 
 	GLushort cube_index_array[] = {
@@ -116,16 +113,17 @@ void init(void)
 		0,1,2,3,
 		// back
 		4,5,6,7,
-		// top
-		4,5,1,0,
-		// bot
-		2,3,7,6,
-		// left
-		2,6,5,1,
-		// right
-		0,4,7,3
-	};
 
+		// // top
+		// 4,5,1,0,
+		// // bot
+		// 2,3,7,6,
+
+		// // left
+		// 2,6,5,1,
+		// // right
+		// 0,4,7,3
+	};
 
 
 
@@ -225,6 +223,7 @@ void init(void)
 	glUniform1i(glGetUniformLocation(program, "texture0"), 0);
 
 	// generate and bind Index Buffer Object
+	cube_tex_ibo = 0;
 	glGenBuffers(1, &cube_tex_ibo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cube_tex_ibo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cube_index_array), cube_index_array, GL_STATIC_DRAW);
@@ -234,7 +233,6 @@ void init(void)
 	glGenBuffers(1, &cube_tex_vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, cube_tex_vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoordinates), textureCoordinates, GL_STATIC_DRAW);
-
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(2);
 
@@ -271,7 +269,6 @@ void transformObject(float scale, glm::vec3 rotationAxis, float rotationAngle, g
 
 
 // Display Function
-
 void
 display(void)
 {
@@ -299,10 +296,53 @@ display(void)
 	// // Draw cube
 	// glDrawElements(GL_QUADS, 24, GL_UNSIGNED_SHORT, 0);
 
+	for (int i = 0; i <= 2; i++)
+	{
 
-	glBindVertexArray(gVAO);
-	transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), XY_AXIS, 1.0f, glm::vec3(0.0f, 0.0f, 0.0f));
-	glDrawElements(GL_QUADS, 32, GL_UNSIGNED_SHORT, 0);
+		if (i==0)
+		{
+			glBindVertexArray(gVAO);
+			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), XY_AXIS, 1.0f, glm::vec3(3.0f, 0.0f, 0.0f));
+			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
+		}
+		else if (i==1)
+		{
+			glBindVertexArray(gVAO);
+			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), X_AXIS, 90.0f, glm::vec3(3.0f, 0.0f, 0.0f));
+			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
+		}
+		else if (i==2)
+		{
+			glBindVertexArray(gVAO);
+			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), Y_AXIS, 90.0f, glm::vec3(3.0f, 0.0f, 0.0f));
+			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
+		}
+		
+	}
+	
+	for (int i = 0; i <= 2; i++)
+	{
+
+		if (i==0)
+		{
+			glBindVertexArray(gVAO);
+			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), XY_AXIS, 1.0f, glm::vec3(-3.0f, 0.0f, 0.0f));
+			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
+		}
+		else if (i==1)
+		{
+			glBindVertexArray(gVAO);
+			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), X_AXIS, 90.0f, glm::vec3(-3.0f, 0.0f, 0.0f));
+			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
+		}
+		else if (i==2)
+		{
+			glBindVertexArray(gVAO);
+			transformObject2(glm::vec3(1.0f, 1.0f, 1.0f), Y_AXIS, 90.0f, glm::vec3(-3.0f, 0.0f, 0.0f));
+			glDrawElements(GL_QUADS, 64, GL_UNSIGNED_SHORT, 0);	
+		}
+		
+	}
 
 
 
