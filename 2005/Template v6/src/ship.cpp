@@ -15,12 +15,13 @@ Ship::Ship() :
 	glm::vec2 size = TheTextureManager::Instance()->getTextureSize("ship");
 	setWidth(size.x);
 	setHeight(size.y);
-	setPosition(glm::vec2(400.0f, 300.0f));
-	setVelocity(glm::vec2(0.0f, 1.0f));
-	setAcceleration(glm::vec2(0.0f, 0.0f));
+	setPosition(glm::vec2(30.0f, 400.0f));
+	setVelocity(glm::vec2(0.4f, 0.3f));
+	setAcceleration(glm::vec2(0.2f, 0.15f));
 	setIsColliding(true);
 	setType(GameObjectType::SHIP);
 	setState(State::IDLE);
+	moving = true;
 }
 
 
@@ -90,14 +91,34 @@ void Ship::turnLeft()
 
 void Ship::move()
 {
+	if (moving)
+	{
+		glm::vec2 newVelocity = getVelocity() + getAcceleration();
+		setVelocity(newVelocity);  
+		glm::vec2 newPosition = getPosition() + getVelocity();
+		setPosition(newPosition);
+	}else
+	{
+		glm::vec2 newVelocity = getVelocity() + getAcceleration();
+		setVelocity(newVelocity);
+		glm::vec2 newPosition = getPosition() + getVelocity();
+		setPosition(newPosition);
 
-	// setAcceleration(glm::vec2(0.0f, 0.98f));
-	// glm::vec2 newVelocity = getAcceleration() + getVelocity();
-	// setVelocity(newVelocity);
-	glm::vec2 newPosition = getPosition() + getVelocity() * 9.8f;
-	setPosition(newPosition);
+		if (getAcceleration().x > 0)
+		{
+			float temp = getAcceleration().x;
+			setAcceleration(glm::vec2(temp -= 0.4, 0.0f));
+		}
+		
+		
+		if(getVelocity().x < 0)
+		{
+			setVelocity(glm::vec2(0.0f, 0.0f));
+			setAcceleration(glm::vec2(0.0f,0.0f));
+		}
+		
 
-	
+	}
 	
 
 }
@@ -136,9 +157,15 @@ void Ship::m_checkBounds()
 		setPosition(glm::vec2(800.0f, getPosition().y));
 	}
 
-	if (getPosition().y > Config::SCREEN_HEIGHT)
+	if (getPosition().y >= 542)
 	{
-		setPosition(glm::vec2(getPosition().x, 600.0f));
+		setPosition(glm::vec2(getPosition().x, 542.0f));
+		// while (getVelocity().x > 0)
+		// {
+
+		// 	setAcceleration(glm::vec2(-0.1f, 0.0f));
+		// }
+		moving = false;
 	}
 
 	if (getPosition().y < 0)

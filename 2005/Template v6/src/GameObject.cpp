@@ -104,3 +104,8 @@ void GameObject::setAcceleration(glm::vec2 newAcceleration)
 {
 	m_acceleration = newAcceleration;
 }
+
+void GameObject::setRotation(glm::vec2 rot)
+{
+	m_rotation = rot;
+}

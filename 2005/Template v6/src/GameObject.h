@@ -60,6 +60,7 @@ public:
 	void setType(GameObjectType newType);
 	void setState(State newState);
 	void setAcceleration(glm::vec2 newAcceleration);
+	void setRotation(glm::vec2 rot);
 
 private:
 	// transform variables

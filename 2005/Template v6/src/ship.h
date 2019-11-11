@@ -33,14 +33,13 @@ public:
 
 	glm::vec2 getTarget();
 	void setTarget(glm::vec2 position);
-private:
 
+	bool moving;
+private:
 
 	void m_checkState();
 	void m_checkBounds();
-
 	void m_reset();
-
 	// steering behaviours
 	void m_seek();
 	float m_maxSpeed;
@@ -48,7 +47,6 @@ private:
 	float m_turnSpeed;
 	float m_steerForce;
 	glm::vec2 m_target;
-
 	Tile* m_currentTile;
 };
 

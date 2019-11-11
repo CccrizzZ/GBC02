@@ -21,6 +21,7 @@ Ramp::Ramp() :
 	setIsColliding(true);
 	setType(GameObjectType::SHIP);
 	setState(State::IDLE);
+
 }
 
 

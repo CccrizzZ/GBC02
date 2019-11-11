@@ -27,25 +27,6 @@ private:
 	Ship* m_pShip;
 	Ramp* m_pRamp;
 
-	glm::vec2 m_mousePosition;
-
-	// ImGui utility functions
-	void m_ImGuiKeyMap();
-	void m_ImGuiSetStyle();
-	void m_updateUI();
-
-	// ImGui menu variables
-	bool m_exitApp = false;
-	bool m_displayAbout = false;
-	bool m_displayUI = true;
-
-	// Physics Variables
-	const float Deg2Rad = 0.0174532925f;
-	const float Rad2Deg = 57.2957795130f;
-	bool m_isGravityEnabled = false;
-	float m_gravity = 9.8f;
-	float m_PPM = 5.0f; // pixels per meter - scale
-
 
 };
 
