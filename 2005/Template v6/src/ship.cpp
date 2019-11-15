@@ -18,6 +18,7 @@ Ship::Ship() :
 	setPosition(glm::vec2(30.0f, 400.0f));
 	setVelocity(glm::vec2(0.4f, 0.3f));
 	setAcceleration(glm::vec2(0.2f, 0.15f));
+	setRotation(glm::vec2(45.0f, 0.0f));
 	setIsColliding(true);
 	setType(GameObjectType::SHIP);
 	setState(State::IDLE);
@@ -59,7 +60,6 @@ void Ship::m_checkState()
 
 void Ship::update()
 {
-
 	move();
 	m_checkBounds();
 }
