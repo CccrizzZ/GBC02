@@ -44,12 +44,14 @@ GLuint gVAO;		// Vertex Array Object
 GLuint ibo;			// Index Buffer Object
 GLuint points_vbo;	// Vertex Buffer Object (Points)
 GLuint colors_vbo;	// Vertex Buffer Object (Colors)
-GLuint modelID;
-GLuint cube_tex_vbo;		// Vertex Array Object
-GLuint cube_tex_ibo;		// Index Buffer Object
+GLuint cube_tex_vbo;		// Vertex Buffer Object
 GLuint cube_tex;			// Texture
+GLuint modelID;
+GLuint projID;
+GLuint viewID;
 
-// Lights Variable
+
+// Lights Variables
 glm::vec3 ambientColor = glm::vec3(1.0f, 1.0f, 1.0f);
 GLfloat ambientStrength = 0.1f;
 
@@ -58,28 +60,125 @@ glm::vec3 lightDirection = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 diffuseColor = glm::vec3(1.0f, 0.5f, 1.0f);
 GLfloat diffuseStrength = 1.0f;
 
+void calcAverageNormals(
+	GLshort *indices,
+	unsigned int indiceCount,
+	GLfloat *vertices,
+	unsigned int verticeCount,
+	unsigned int vLength,
+	unsigned int normalOffset)
+{
+	// Calc the normal of each triangle first
+	for (int i = 0; i < indiceCount; i+=3)
+	{
+		unsigned int in0 = indices[i] * vLength;
+		unsigned int in1 = indices[i + 1] * vLength;
+		unsigned int in2 = indices[i + 2] * vLength;
 
+		glm::vec3 v1(
+			vertices[in1] - vertices[in0],
+			vertices[in1 + 1] - vertices[in0 + 1],
+			vertices[in1 + 2] - vertices[in0 + 2]
+		);
 
+		glm::vec3 v2(
+			vertices[in2] - vertices[in0],
+			vertices[in2 + 1] - vertices[in0 + 1],
+			vertices[in2 + 2] - vertices[in0 + 2]
+		);
+
+		// cross two vectors to get the normal
+		glm::vec3 normal = glm::cross(v1, v2);
+		// normalize normal
+		normal = glm::normalize(normal);
+
+		in0 += normalOffset;
+		in1 += normalOffset;
+		in2 += normalOffset;
+
+		vertices[in0] += normal.x;
+		vertices[in0 + 1] += normal.y;
+		vertices[in0 + 2] += normal.z;
+
+		vertices[in1] += normal.x;
+		vertices[in1 + 1] += normal.y;
+		vertices[in1 + 2] += normal.z;
+
+		vertices[in2] += normal.x;
+		vertices[in2 + 1] += normal.y;
+		vertices[in2 + 2] += normal.z;
+	}
+
+	for (int i = 0; i < vLength / vLength; i++)
+	{
+		unsigned int nOffset = i * vLength + normalOffset;
+		glm::vec3 vec(vertices[nOffset], vertices[nOffset + 1], vertices[nOffset + 2]);
+		vec = glm::normalize(vec);
+		vertices[nOffset] = vec.x;
+		vertices[nOffset + 1] = vec.y;
+		vertices[nOffset + 2] = vec.z;
+	}
+}
 
 // Initiallization Function
 void init(void)
 {
 
-	//Specifying the name of vertex and fragment shaders.
+	// Specifying the name of vertex and fragment shaders.
 	ShaderInfo shaders[] = {
 		{ GL_VERTEX_SHADER, "triangles.vert" },
 		{ GL_FRAGMENT_SHADER, "triangles.frag" },
 		{ GL_NONE, NULL }
 	};
 
-	//Loading and compiling shaders
+	// Loading and compiling shaders
 	GLuint program = LoadShaders(shaders);
 	glUseProgram(program);	//My Pipeline is set up
 
 
 
-
+	// Get Location
 	modelID = glGetUniformLocation(program, "mvp");
+	projID = glGetUniformLocation(program, "projection");
+	viewID = glGetUniformLocation(program, "view");
+
+
+	// Setting ambient light Color
+	glUniform3f(
+		glGetUniformLocation(program, "ambientColor"),
+		ambientColor.x,
+		ambientColor.y,
+		ambientColor.z
+	);
+
+	// Setting ambient light Strength
+	glUniform1f(
+		glGetUniformLocation(program, "ambientStrength"), 
+		ambientStrength
+	);
+
+	// Setting diffuse light direction
+	glUniform3f(
+		glGetUniformLocation(program, "lightDirection"),
+		lightDirection.x,
+		lightDirection.y,
+		lightDirection.z
+	);
+
+	// Setting deffuse light color
+	glUniform3f(
+		glGetUniformLocation(program, "diffuseColor"),
+		diffuseColor.x,
+		diffuseColor.y,
+		diffuseColor.z
+	);
+
+	// Setting deffuse light strength
+	glUniform1d(
+		glGetUniformLocation(program, "diffuseStrength"),
+		diffuseStrength
+	);
+
 
 	// in world coordinates
 	projection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.0f, 100.0f); 
@@ -133,7 +232,7 @@ void init(void)
 
 	};
 
-	GLushort cube_indices[] = {
+	GLshort cube_indices[] = {
 		0,1,2,3,
 		4,5,6,7,
 		8,9,10,11,
@@ -181,6 +280,7 @@ void init(void)
 		0.65f, 0.65f, 0.65f,		// 23.
 	};
 
+	calcAverageNormals(cube_indices, 24, cube_vertices, 72, 8, 5);
 
 	// generate and bind Vertex Array Object
 	gVAO = 0;
@@ -199,6 +299,11 @@ void init(void)
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(0);
 
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(2);
+
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(3);
 
 
 	// Load image using SOIL
@@ -252,6 +357,8 @@ void transformObject2(glm::vec3 scale, glm::vec3 rotationAxis, float rotationAng
 	Model = glm::scale(Model, scale);
 	mvp = projection * view * Model;
 	glUniformMatrix4fv(modelID, 1, GL_FALSE, &mvp[0][0]);
+	glUniformMatrix4fv(projID, 1, GL_FALSE, &projection[0][0]);
+	glUniformMatrix4fv(viewID, 1, GL_FALSE, &view[0][0]);
 }
 
 // Object Transformation Function 2
@@ -263,6 +370,8 @@ void transformObject(float scale, glm::vec3 rotationAxis, float rotationAngle, g
 	Model = glm::scale(Model, glm::vec3(scale));
 	mvp = projection * view * Model;
 	glUniformMatrix4fv(modelID, 1, GL_FALSE, &mvp[0][0]);
+	glUniformMatrix4fv(projID, 1, GL_FALSE, &projection[0][0]);
+	glUniformMatrix4fv(viewID, 1, GL_FALSE, &view[0][0]);
 }
 
 
@@ -272,22 +381,22 @@ void
 display(void)
 {
 	view = glm::lookAt(
-		glm::vec3(posX, posY, posZ),		// Camera pos in World Space
-		glm::vec3(posX, posY, 0),		// and looks at the origin
-		glm::vec3(0, 1, 0)		// Head is up (set to 0,-1,0 to look upside-down)
+		glm::vec3(posX, posY, posZ),	// Camera pos in World Space
+		glm::vec3(posX, posY, 0),		// Looks at the origin
+		glm::vec3(1, 0, 0)	            //  X axis is X
 	);
 
 	// Clear buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Background Color
-	glClearColor(0.0f, 0.5f, 0.5f, 0.0f);
+	glClearColor(0.3f, 0.0f, 0.0f, 0.0f);
 
 	// Set Camera Projection
 	projection = glm::perspective(30.0f, (GLfloat)1.0f, 1.0f, 50.0f);
 
 	// First Cube
-	transformObject(1.0f, XYZ_AXIS, rotAngle-=2, glm::vec3(-3.0f, 0.0f, 0.0f));
+	transformObject(1.0f, X_AXIS, rotAngle-=2, glm::vec3(0.0f, 0.0f, 0.0f));
 	glBindVertexArray(gVAO);
 	glBindTexture(GL_TEXTURE_2D, cube_tex);
 	// Ordering GPU to start the pipeline
@@ -295,14 +404,6 @@ display(void)
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindVertexArray(0);
 
-	// Second Cube
-	transformObject(1.0f, XYZ_AXIS, rotAngle1+=2, glm::vec3(3.0f, 0.0f, 0.0f));
-	glBindVertexArray(gVAO);
-	glBindTexture(GL_TEXTURE_2D, cube_tex);
-	// Ordering GPU to start the pipeline
-	glDrawElements(GL_QUADS, 36, GL_UNSIGNED_SHORT, 0);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	glBindVertexArray(0);
 
 
 
