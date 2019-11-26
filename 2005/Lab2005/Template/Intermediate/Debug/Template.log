@@ -1,0 +1,12 @@
+﻿  StartScene.cpp
+c:\users\crizz\desktop\lab2005\src\startscene.cpp(162): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\lab2005\src\startscene.cpp(163): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Template.vcxproj -> C:\Users\crizz\Desktop\Lab2005\bin\Debug\Template.exe
