@@ -4,7 +4,8 @@
 #include "GLM/gtx/rotate_vector.hpp"
 #include "PlayScene.h"
 #include "GLM/gtx/string_cast.hpp"
-
+#include <iostream>
+using namespace std;
 
 Ship::Ship() :
 	m_maxSpeed(5.0f), m_currentDirection(0.0f), m_turnSpeed(2.0f), m_steerForce(0.1f), m_currentTile(NULL)
@@ -61,6 +62,7 @@ void Ship::update()
 {
 	move();
 	m_checkBounds();
+	
 }
 
 void Ship::clean()
@@ -118,24 +120,24 @@ void Ship::setTarget(glm::vec2 position)
 void Ship::m_checkBounds()
 {
 
-	if (getPosition().x > Config::SCREEN_WIDTH)
+	if (getPosition().x > Config::SCREEN_WIDTH - getWidth() / 2)
 	{
-		setPosition(glm::vec2(0.0f, getPosition().y));
+		setPosition(glm::vec2(800.0f - getWidth()/2, getPosition().y));
 	}
 
-	if (getPosition().x < 0)
+	if (getPosition().x < 0 + getWidth() / 2)
 	{
-		setPosition(glm::vec2(800.0f, getPosition().y));
+		setPosition(glm::vec2(0.0f + getWidth() / 2, getPosition().y));
 	}
 
-	if (getPosition().y > Config::SCREEN_HEIGHT)
+	if (getPosition().y > Config::SCREEN_HEIGHT - getHeight() / 2)
 	{
-		setPosition(glm::vec2(getPosition().x, 0.0f));
+		setPosition(glm::vec2(getPosition().x, 600.0f - getHeight()/2));
 	}
 
-	if (getPosition().y < 0)
+	if (getPosition().y < 0 + getHeight() / 2)
 	{
-		setPosition(glm::vec2(getPosition().x, 600.0f));
+		setPosition(glm::vec2(getPosition().x, 0.0f + getHeight() / 2));
 	}
 
 }

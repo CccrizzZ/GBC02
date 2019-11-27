@@ -67,7 +67,8 @@ void Ball::move()
         {
             setVelocity(glm::vec2(getVelocity().x - 0.01f , getVelocity().y));
         }
-        else if(getVelocity().x < 0)
+        
+        if(getVelocity().x < 0)
         {
             setVelocity(glm::vec2(getVelocity().x + 0.01f, getVelocity().y));
         }
@@ -79,7 +80,8 @@ void Ball::move()
         {
             setVelocity(glm::vec2(getVelocity().x, getVelocity().y - 0.01f));
         }
-        else if (getVelocity().y < 0)
+        
+        if (getVelocity().y < 0)
         {
             setVelocity(glm::vec2(getVelocity().x, getVelocity().y + 0.01f)); 
         }

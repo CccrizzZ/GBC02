@@ -48,10 +48,11 @@ private:
 	glm::vec2 m_position = glm::vec2(0.0f, 0.0f);
 	glm::vec2 m_velocity = glm::vec2(0.0f, 0.0f);
 	glm::vec2 m_acceleration = glm::vec2(0.0f, 0.0f);
-	
+
 	// Physics functions
 	void m_move();
 	bool AABB(GameObject &obj1, GameObject &obj2);
+	bool AABB2(GameObject &obj1, GameObject &obj2);
 };
 
 #endif /* defined (__START_SCENE__) */

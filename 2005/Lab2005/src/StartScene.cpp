@@ -20,81 +20,37 @@ StartScene::~StartScene()
 bool StartScene::AABB(GameObject& obj1, GameObject& obj2)
 {
 	int tempW1 = obj1.getWidth() / 2;
-	int tempH1 = obj1.getHeight() / 2;
 	int tempW2 = obj2.getWidth() / 2;
+	int tempH1 = obj1.getHeight() / 2;
 	int tempH2 = obj2.getHeight() / 2;
+	float obj1_X = obj1.getPosition().x;
+	float obj2_X = obj2.getPosition().x;
+	float obj1_Y = obj1.getPosition().y;
+	float obj2_Y = obj2.getPosition().y;
 
-	if 
+
+	if
 	((
-		obj1.getPosition().x + tempW1 >= obj2.getPosition().x - tempW2 &&
-		 obj1.getPosition().x - tempW1 <= obj2.getPosition().x + tempW2) 
-		 &&
-		(obj1.getPosition().y + tempH1 >= obj2.getPosition().y - tempH2 &&
-		 obj1.getPosition().y - tempH1 <= obj2.getPosition().y + tempH2
+		obj1_X + tempW1 >= obj2_X - tempW2 &&
+		obj1_X - tempW1 <= obj2_X + tempW2) &&
+		(obj1_Y + tempH1 >= obj2_Y - tempH2 &&
+		obj1_Y - tempH1 <= obj2_Y + tempH2
 	))
 	{
-		if (obj1.getPosition().x + tempW1 >= obj2.getPosition().x - tempW2) // 1-><-2
+		if ((
+			obj1_X + tempW1 >= obj2_X - tempW2 && obj1_Y + tempH1 >= obj2_Y - tempH2) || 
+			(obj1_X + tempW1 >= obj2_X - tempW2 && obj1_Y - tempH1 <= obj2_Y + tempH2) || 
+			(obj1_X - tempW1 <= obj2_X + tempW2 && obj1_Y + tempH1 >= obj2_Y - tempH2) || 
+			(obj1_X + tempW1 >= obj2_X - tempW2) || 
+			(obj1_X - tempW1 <= obj2_X + tempW2
+		))
 		{
-			if (obj2.getPosition().x >= 0.0f + obj2.getWidth() / 2 && obj2.getPosition().x <= 800.0f - obj2.getWidth() / 2)
+			if (obj1.getVelocity().x != 0 && obj1.getVelocity().y !=0)
 			{
-				obj2.setPosition(glm::vec2(obj1.getPosition().x + tempW1 + tempW2, obj2.getPosition().y));
-				// obj2.reboundX();
-				obj2.setVelocity(glm::vec2(5.0f, obj2.getVelocity().y));
-				return true;
+				obj2.setVelocity(glm::vec2(obj1.getVelocity().x, obj1.getVelocity().y));
 			}
-			else
-			{
-				obj1.setPosition(obj1.getPosition());
-				obj2.setPosition(obj2.getPosition());
-			}
-			
-		}else if (obj1.getPosition().x - tempW1 <= obj2.getPosition().x + tempW2) // 2-><-1
-		{
-			if (obj2.getPosition().x >= 0.0f + obj2.getWidth() / 2 && obj2.getPosition().x <= 800.0f - obj2.getWidth() / 2)
-			{
-				obj2.setPosition(glm::vec2(obj1.getPosition().x - tempW1 - tempW2, obj2.getPosition().y));
-				// obj2.reboundX();
-				obj2.setVelocity(glm::vec2(-2.0f, obj2.getVelocity().y));
-				return true;
-			}
-			else
-			{
-				obj1.setPosition(obj1.getPosition());
-				obj2.setPosition(obj2.getPosition());
-			}
-		} else if (obj1.getPosition().y + tempH1 >= obj2.getPosition().y - tempH2) // 1v ^2
-		{
-			if (obj2.getPosition().y >= 0.0f + obj2.getHeight() / 2 && obj2.getPosition().y <= 600.0f - obj2.getHeight() / 2)
-			{
-				obj2.setPosition(glm::vec2(obj2.getPosition().x, obj1.getPosition().y - tempH1 - tempH2));
-				// obj2.reboundY();
-				return true;
-				obj2.setVelocity(glm::vec2(obj2.getVelocity().x, -2.0f));
-			}
-			else
-			{
-				obj1.setPosition(obj1.getPosition());
-				obj2.setPosition(obj2.getPosition());
-			}
-			
+			return true;
 		}
-		else if (obj1.getPosition().y - tempH1 <= obj2.getPosition().y + tempH2) // 2v ^1
-		{
-			if (obj2.getPosition().y >= 0.0f + obj2.getHeight() / 2 && obj2.getPosition().y <= 600.0f - obj2.getHeight() / 2)
-			{
-				obj2.setPosition(glm::vec2(obj2.getPosition().x, obj1.getPosition().y + tempH1 + tempH2));
-				// obj2.reboundY();
-				return true;
-				obj2.setVelocity(glm::vec2(obj2.getVelocity().x, 2.0f));
-			}
-			else
-			{
-				obj1.setPosition(obj1.getPosition());
-				obj2.setPosition(obj2.getPosition());
-			}
-		}
-
-
 	}
 	return false;
 }
@@ -118,15 +74,26 @@ void StartScene::draw()
 void StartScene::update()
 {
 	m_move();
-	m_pShip->update();
 	m_pBall->update();
+	m_pShip->update();
 	
-	if (AABB(*m_pShip,*m_pBall))
-	{
-		m_pBall->setVelocity(glm::vec2(0.0f, 1.0f));
+	if(AABB(*m_pShip,*m_pBall))
+	{	
+		if (m_pShip->getVelocity().x == 0)
+		{
+			m_pBall->reboundX();
+		}
+		
+		if (m_pShip->getVelocity().y == 0)
+		{
+			m_pBall->reboundY();			
+		}
 
+		m_pBall->setPosition(glm::vec2(
+			m_pBall->getPosition().x + m_pShip -> getVelocity().x,
+			m_pBall->getPosition().y + m_pShip -> getVelocity().y)
+		);
 	}
-	
 
 	if (m_displayUI)
 	{
@@ -136,9 +103,6 @@ void StartScene::update()
 
 void StartScene::clean()
 {
-	/*delete m_pStartLabel;
-	delete m_pInstructionsLabel;*/
-
 	delete m_pShip;
 	delete m_pBall;
 
@@ -161,7 +125,6 @@ void StartScene::handleEvents()
 		case SDL_MOUSEMOTION:
 			m_mousePosition.x = event.motion.x;
 			m_mousePosition.y = event.motion.y;
-			m_position = glm::vec2(m_mousePosition.x, m_mousePosition.y);
 			break;
 		case SDL_MOUSEWHEEL:
 			wheel = event.wheel.y;
@@ -596,6 +559,21 @@ void StartScene::m_move()
 {
 	// m_acceleration = glm::vec2(0.0f, 0.5 * m_gravity * m_PPM);
 
-	// m_position = m_pShip->getPosition() + m_velocity + m_acceleration;
+	// If ship is not at mouse position move ship to mouse position
+	if (m_mousePosition.x != m_pShip->getPosition().x && m_mousePosition.y != m_pShip->getPosition().y)
+	{
+		m_velocity = glm::vec2(roundf((m_mousePosition.x - m_pShip->getPosition().x) / 5), roundf((m_mousePosition.y - m_pShip->getPosition().y) / 5));		
+	}
+	else
+	{
+		m_pShip->setPosition(glm::vec2(m_mousePosition.x, m_mousePosition.y));
+	}
+
+	std::cout << m_velocity.x << "|" << m_velocity.y << std::endl;
+
+	m_pShip->setVelocity(m_velocity);
+
+	// Set Ship Velocity
+	m_position = m_pShip->getPosition() + m_velocity;
 	m_pShip->setPosition(m_position);
 }
