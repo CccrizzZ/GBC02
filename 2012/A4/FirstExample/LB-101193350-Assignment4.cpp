@@ -280,7 +280,6 @@ void init(void)
 		0.65f, 0.65f, 0.65f,		// 23.
 	};
 
-	calcAverageNormals(cube_indices, 23, cube_vertices, 72, 8, 5);
 
 	// generate and bind Vertex Array Object
 	gVAO = 0;
@@ -305,6 +304,7 @@ void init(void)
 	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(3);
 
+	calcAverageNormals(cube_indices, 23, cube_vertices, 72, 8, 5);
 
 	// Load image using SOIL
 	GLint width, height;
@@ -396,7 +396,7 @@ display(void)
 	projection = glm::perspective(30.0f, (GLfloat)1.0f, 1.0f, 50.0f);
 
 	// First Cube
-	transformObject(1.0f, X_AXIS, rotAngle-=2, glm::vec3(0.0f, 0.0f, 0.0f));
+	transformObject(1.0f, X_AXIS, rotAngle, glm::vec3(0.0f, 0.0f, 0.0f));
 	glBindVertexArray(gVAO);
 	glBindTexture(GL_TEXTURE_2D, cube_tex);
 	// Ordering GPU to start the pipeline
