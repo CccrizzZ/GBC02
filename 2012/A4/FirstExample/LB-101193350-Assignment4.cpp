@@ -400,7 +400,7 @@ display(void)
 	glBindVertexArray(gVAO);
 	glBindTexture(GL_TEXTURE_2D, cube_tex);
 	// Ordering GPU to start the pipeline
-	glDrawElements(GL_QUADS, 36, GL_UNSIGNED_SHORT, 0);
+	glDrawElements(GL_QUADS, 600, GL_UNSIGNED_SHORT, 0);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindVertexArray(0);
 

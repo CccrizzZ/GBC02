@@ -1,17 +1,22 @@
 #include <iostream>
-#include "LinkedList.h"
+#include "PriorityQueue.h"
 using namespace std;
 
 int main(int argc,char argv[])
 {
-	LinkList<int> Mylist;
+    PriorityQueue<int> MyPsnQs;
 
-    Mylist.Push(100);
-    Mylist.Push(100);
-    Mylist.Push(100);
-    Mylist.Push(100);
+    MyPsnQs.Push(100, 1);
+    MyPsnQs.Push(200, 2);
+    MyPsnQs.Push(300, 3);
+    MyPsnQs.Push(400, 4);
 
-    cout << Mylist.GetSize() << endl;
+    MyPsnQs.Pop();
+
+    int listsize = MyPsnQs.GetSize();
+    cout << listsize << endl;
+    cout << MyPsnQs.Front() << endl;
+
     system("pause");
     return 0;
 }
