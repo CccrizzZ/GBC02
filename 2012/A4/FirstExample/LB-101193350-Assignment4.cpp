@@ -13,6 +13,7 @@ using namespace std;
 #include "LoadShaders.h"
 #include "glm\glm.hpp"
 #include "glm\gtc\matrix_transform.hpp"
+#include "glm\gtc\type_ptr.hpp"
 #include <SoilLib/SOIL.h>
 
 #define X_AXIS glm::vec3(1, 0, 0)
@@ -36,89 +37,60 @@ float rotAngle1 = 0.0f;
 
 
 
-glm::mat4 mvp;
-glm::mat4 view;
-glm::mat4 projection;
-
 GLuint gVAO;		// Vertex Array Object
 GLuint ibo;			// Index Buffer Object
 GLuint points_vbo;	// Vertex Buffer Object (Points)
 GLuint colors_vbo;	// Vertex Buffer Object (Colors)
 GLuint cube_tex_vbo;		// Vertex Buffer Object
 GLuint cube_tex;			// Texture
+
+
+GLuint MVPID;
 GLuint modelID;
 GLuint projID;
 GLuint viewID;
+GLuint diffuseTextID;
 
+glm::mat4 mvp;
+glm::mat4 view;
+glm::mat4 projection;
 
-// Lights Variables
-glm::vec3 ambientColor = glm::vec3(1.0f, 1.0f, 1.0f);
-GLfloat ambientStrength = 0.1f;
+glm::vec3 currentLightPos;
 
-glm::vec3 lightDirection = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 currentCamPos;
+glm::vec3 currentCamVel;
 
-glm::vec3 diffuseColor = glm::vec3(1.0f, 0.5f, 1.0f);
-GLfloat diffuseStrength = 1.0f;
+int frame=0, currentTime, timebase=0;
+float deltaTime = 0;
+bool keyStates[256] = {};
 
-void calcAverageNormals(
-	GLshort *indices,
-	unsigned int indiceCount,
-	GLfloat *vertices,
-	unsigned int verticeCount,
-	unsigned int vLength,
-	unsigned int normalOffset)
+struct PointLight
 {
-	// Calc the normal of each triangle first
-	for (int i = 0; i < indiceCount; i+=3)
-	{
-		unsigned int in0 = indices[i] * vLength;
-		unsigned int in1 = indices[i + 1] * vLength;
-		unsigned int in2 = indices[i + 2] * vLength;
+	GLuint posHandle;
+	GLuint colorHandle;
+	GLuint strengthHandle;
+};
 
-		glm::vec3 v1(
-			vertices[in1] - vertices[in0],
-			vertices[in1 + 1] - vertices[in0 + 1],
-			vertices[in1 + 2] - vertices[in0 + 2]
-		);
+struct DirectLight
+{
+	GLuint dirHandle;
+	GLuint colorHandle;
+	GLuint strengthHandle;
+};
 
-		glm::vec3 v2(
-			vertices[in2] - vertices[in0],
-			vertices[in2 + 1] - vertices[in0 + 1],
-			vertices[in2 + 2] - vertices[in0 + 2]
-		);
+struct Light
+{
+	GLuint colorHandle;
+	GLuint posHandle;
+	GLuint strengthHandle;
+	GLuint falloffStartHandle;
+	GLuint falloffEndHandle;
+};
 
-		// cross two vectors to get the normal
-		glm::vec3 normal = glm::cross(v1, v2);
-		// normalize normal
-		normal = glm::normalize(normal);
+Light pointLights[2];
 
-		in0 += normalOffset;
-		in1 += normalOffset;
-		in2 += normalOffset;
 
-		vertices[in0] += normal.x;
-		vertices[in0 + 1] += normal.y;
-		vertices[in0 + 2] += normal.z;
 
-		vertices[in1] += normal.x;
-		vertices[in1 + 1] += normal.y;
-		vertices[in1 + 2] += normal.z;
-
-		vertices[in2] += normal.x;
-		vertices[in2 + 1] += normal.y;
-		vertices[in2 + 2] += normal.z;
-	}
-
-	for (int i = 0; i < vLength / vLength; i++)
-	{
-		unsigned int nOffset = i * vLength + normalOffset;
-		glm::vec3 vec(vertices[nOffset], vertices[nOffset + 1], vertices[nOffset + 2]);
-		vec = glm::normalize(vec);
-		vertices[nOffset] = vec.x;
-		vertices[nOffset + 1] = vec.y;
-		vertices[nOffset + 2] = vec.z;
-	}
-}
 
 // Initiallization Function
 void init(void)
@@ -135,157 +107,147 @@ void init(void)
 	GLuint program = LoadShaders(shaders);
 	glUseProgram(program);	//My Pipeline is set up
 
-
-
-	// Get Location
-	modelID = glGetUniformLocation(program, "mvp");
-	projID = glGetUniformLocation(program, "projection");
-	viewID = glGetUniformLocation(program, "view");
-
-
-	// Setting ambient light Color
-	glUniform3f(
-		glGetUniformLocation(program, "ambientColor"),
-		ambientColor.x,
-		ambientColor.y,
-		ambientColor.z
-	);
-
-	// Setting ambient light Strength
-	glUniform1f(
-		glGetUniformLocation(program, "ambientStrength"), 
-		ambientStrength
-	);
-
-	// Setting diffuse light direction
-	glUniform3f(
-		glGetUniformLocation(program, "lightDirection"),
-		lightDirection.x,
-		lightDirection.y,
-		lightDirection.z
-	);
-
-	// Setting deffuse light color
-	glUniform3f(
-		glGetUniformLocation(program, "diffuseColor"),
-		diffuseColor.x,
-		diffuseColor.y,
-		diffuseColor.z
-	);
-
-	// Setting deffuse light strength
-	glUniform1d(
-		glGetUniformLocation(program, "diffuseStrength"),
-		diffuseStrength
-	);
-
-
-	// in world coordinates
-	projection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.0f, 100.0f); 
-
-	// Camera matrix
-	view = glm::lookAt(
-		glm::vec3(posX, posY, posZ),		// Camera pos in World Space
-		glm::vec3(0, 0, 0),		// and looks at the origin
-		glm::vec3(0, 1, 0)		// Head is up (set to 0,-1,0 to look upside-down)
-	);
-
-
 	// SOIL textures
-	GLfloat textureCoordinates[] ={
+	GLfloat textureCoordinates[] = {
 		// FRONT
 		0.25f, 0.333f, // 0
-		0.5f, 0.333f, // 1
-		0.5f, 0.666f, // 2
-		0.25, 0.666f, // 3
+		0.5f, 0.333f,  // 1
+		0.5f, 0.666f,  // 2
+		0.25, 0.666f,  // 3
 
-		// BACK
-		0.75f, 0.333f, // 0
-		1.0f, 0.333f, // 1
-		1.0f, 0.666f, // 2
-		0.75, 0.666f, // 3
+		// // BACK
+		// 0.75f, 0.333f, // 0
+		// 1.0f, 0.333f,  // 1
+		// 1.0f, 0.666f,  // 2
+		// 0.75, 0.666f,  // 3
 
-		// TOP
-		0.25f, 0.0f, // 0
-		0.5f, 0.0f, // 1
-		0.5f, 0.333f, // 2
-		0.25, 0.333f, // 3
+		// // TOP
+		// 0.25f, 0.0f,  // 0
+		// 0.5f, 0.0f,   // 1
+		// 0.5f, 0.333f, // 2
+		// 0.25, 0.333f, // 3
 
-		// BOT
-		0.25f, 0.666f, // 0
-		0.5f, 0.666f, // 1
-		0.5f, 1.0f, // 2
-		0.25, 1.0f, // 3
+		// // BOT
+		// 0.25f, 0.666f, // 0
+		// 0.5f, 0.666f,  // 1
+		// 0.5f, 1.0f,	// 2
+		// 0.25, 1.0f,	// 3
 
-		// RIGHT
-		0.0f, 0.333f, // 0
-		0.25f, 0.333f, // 1
-		0.25f, 0.666f, // 2
-		0.0, 0.666f, // 3
+		// // RIGHT
+		// 0.0f, 0.333f,  // 0
+		// 0.25f, 0.333f, // 1
+		// 0.25f, 0.666f, // 2
+		// 0.0, 0.666f,   // 3
 
-		// LEFT
-		0.5f, 0.333f, // 0
-		0.75f, 0.333f, // 1
-		0.75f, 0.666f, // 2
-		0.5, 0.666f, // 3
-
+		// // LEFT
+		// 0.5f, 0.333f,  // 0
+		// 0.75f, 0.333f, // 1
+		// 0.75f, 0.666f, // 2
+		// 0.5, 0.666f,   // 3
 
 	};
 
 	GLshort cube_indices[] = {
-		0,1,2,3,
-		4,5,6,7,
-		8,9,10,11,
-		12,13,14,15,
-		16,17,18,19,
-		20,21,22,23
+		0, 1, 2, 3,
+		4, 5, 6,
+		// 7,
+		// 8,9,10,11,
+		// 12,13,14,15,
+		// 16,17,18,19,
+		// 20,21,22,23
 	};
 
 	// Cube verticies
 	GLfloat cube_vertices[] = {
-		// FRONT
-		-0.65f, -0.65f, 0.65f,		// 0.
-		0.65f, -0.65f, 0.65f,		// 1.
-		0.65f, 0.65f, 0.65f,		// 2.
-		-0.65f, 0.65f, 0.65f,		// 3.
-
-		//BACK
-		-0.65f, -0.65f, -0.65f,		// 4.
-		0.65f, -0.65f, -0.65f,		// 5.
-		0.65f, 0.65f, -0.65f,		// 6.
-		-0.65f, 0.65f, -0.65f,		// 7.
-
-		// TOP
-		-0.65f, -0.65f, 0.65f,		// 8.
-		-0.65f, -0.65f, -0.65f,		// 9.
-		0.65f, -0.65f, -0.65f,		// 10.
-		0.65f, -0.65f, 0.65f,		// 11.
-
-		//BOTTOM
-		-0.65f, 0.65f, 0.65f,		// 12.
-		-0.65f, 0.65f, -0.65f,		// 13.
-		0.65f, 0.65f, -0.65f,		// 14.
-		0.65f, 0.65f, 0.65f,		// 15.
-
-		// LEFT
-		-0.65f, -0.65f, -0.65f,		// 16.
-		-0.65f, -0.65f, 0.65f,		// 17.
-		-0.65f, 0.65f, 0.65f,		// 18.
-		-0.65f, 0.65f, -0.65f,   	// 19.
-
-		//RIGHT
-		0.65f, -0.65f, 0.65f,		// 20.
-		0.65f, -0.65f, -0.65f,		// 21.
-		0.65f, 0.65f, -0.65f,		// 22.
-		0.65f, 0.65f, 0.65f,		// 23.
+		//  X     Y     Z       U     V          Normal
+		// bottom
+		-1.0f,
+		-1.0f,
+		-1.0f,
+		0.0f,
+		0.0f,
+		0.0f,
+		-1.0f,
+		0.0f,
+		1.0f,
+		-1.0f,
+		-1.0f,
+		1.0f,
+		0.0f,
+		0.0f,
+		-1.0f,
+		0.0f,
+		-1.0f,
+		-1.0f,
+		1.0f,
+		0.0f,
+		1.0f,
+		0.0f,
+		-1.0f,
+		0.0f,
+		1.0f,
+		-1.0f,
+		-1.0f,
+		1.0f,
+		0.0f,
+		0.0f,
+		-1.0f,
+		0.0f,
+		1.0f,
+		-1.0f,
+		1.0f,
+		1.0f,
+		1.0f,
+		0.0f,
+		-1.0f,
+		0.0f,
+		-1.0f,
+		-1.0f,
+		1.0f,
+		0.0f,
+		1.0f,
+		0.0f,
+		-1.0f,
+		0.0f,
 	};
 
+	// Init Lights
+	// 1. get position
+	pointLights[0].colorHandle = glGetUniformLocation(program, "pointLights[0].color");
+	pointLights[0].posHandle = glGetUniformLocation(program, "pointLights[0].Position");
+	pointLights[0].strengthHandle = glGetUniformLocation(program, "pointLights[0].Position");
+	pointLights[0].falloffStartHandle = glGetUniformLocation(program, "pointLights[0].Position");
+	pointLights[0].falloffEndHandle = glGetUniformLocation(program, "pointLights[0].Position");
+
+	pointLights[1].colorHandle = glGetUniformLocation(program, "pointLights[0].color");
+	pointLights[1].posHandle = glGetUniformLocation(program, "pointLights[0].Position");
+	pointLights[1].strengthHandle = glGetUniformLocation(program, "pointLights[0].Position");
+	pointLights[1].falloffStartHandle = glGetUniformLocation(program, "pointLights[0].Position");
+	pointLights[1].falloffEndHandle = glGetUniformLocation(program, "pointLights[0].Position");
+
+	// 2. pass data
+	glUniform3fv(pointLights[0].colorHandle, 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 0.0f)));
+	currentLightPos = glm::vec3(2.0f, 2.0f, 1.0f);
+	glUniform3fv(pointLights[0].posHandle, 1, glm::value_ptr(currentLightPos));
+	glUniform1f(pointLights[0].strengthHandle, 1.0f);
+	glUniform1f(pointLights[0].falloffStartHandle, 1.0f);
+	glUniform1f(pointLights[0].falloffEndHandle, 50.0f);
+
+	glUniform3fv(pointLights[1].colorHandle, 1, glm::value_ptr(glm::vec3(0.0f, 0.0f, 1.0f)));
+	glUniform3fv(pointLights[1].posHandle, 1, glm::value_ptr(glm::vec3(1.0f, 1.0f, 1.0f)));
+	glUniform1f(pointLights[1].strengthHandle, 1.0f);
+	glUniform1f(pointLights[1].falloffStartHandle, 1.0f);
+	glUniform1f(pointLights[1].falloffEndHandle, 50.0f);
+
+
+	// Init diffuse texture
+	diffuseTextID = glGetUniformLocation(program, "diffuseTexture");
 
 	// generate and bind Vertex Array Object
 	gVAO = 0;
 	glGenVertexArrays(1, &gVAO);
 	glBindVertexArray(gVAO);
-	
+
 	// generate and bind Index Buffer Object
 	glGenBuffers(1, &ibo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
@@ -304,25 +266,20 @@ void init(void)
 	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(3);
 
-	calcAverageNormals(cube_indices, 23, cube_vertices, 72, 8, 5);
-
 	// Load image using SOIL
 	GLint width, height;
-	unsigned char* image = SOIL_load_image("rubiksCube.png", &width, &height, 0 , SOIL_LOAD_RGB);
-	if (!image)
-	{
-		printf("ERROR: image not found! \n");
-	}
-	else
-	{
-		printf("Image loaded! \n");
-	}
-	
+	glActiveTexture(GL_TEXTURE0);
+
+
+
+	unsigned char *image = SOIL_load_image("bonusTexture.png", &width, &height, 0, SOIL_LOAD_RGBA);
+
+
 	// Enable and bind texture
 	cube_tex = 0;
 	glGenTextures(1, &cube_tex);
 	glBindTexture(GL_TEXTURE_2D, cube_tex);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -340,10 +297,28 @@ void init(void)
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(2);
 
+	// Get Location
+	modelID = glGetUniformLocation(program, "mvp");
+	projID = glGetUniformLocation(program, "projection");
+	viewID = glGetUniformLocation(program, "view");
+
+	// in world coordinates
+	projection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.0f, 100.0f); 
+
+	// Camera matrix
+	view = glm::lookAt(
+		glm::vec3(posX, posY, posZ),		// Camera pos in World Space
+		glm::vec3(0, 0, 0),		// and looks at the origin
+		glm::vec3(0, 1, 0)		// Head is up (set to 0,-1,0 to look upside-down)
+	);
+
+	glUniformMatrix4fv(viewID, 1, GL_FALSE, &view[0][0]);
+	glUniform3fv(pointLights[0].posHandle, 1, glm::value_ptr(currentLightPos));
 
 
-	// Enable depth test
-	glEnable(GL_DEPTH_TEST);
+
+
+
 
 }
 
@@ -390,24 +365,27 @@ display(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Background Color
-	glClearColor(0.3f, 0.0f, 0.0f, 0.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-	// Set Camera Projection
+	// // Set Camera Projection
 	projection = glm::perspective(30.0f, (GLfloat)1.0f, 1.0f, 50.0f);
+
+	
 
 	// First Cube
 	transformObject(1.0f, X_AXIS, rotAngle, glm::vec3(0.0f, 0.0f, 0.0f));
+	
 	glBindVertexArray(gVAO);
 	glBindTexture(GL_TEXTURE_2D, cube_tex);
 	// Ordering GPU to start the pipeline
 	glDrawElements(GL_QUADS, 600, GL_UNSIGNED_SHORT, 0);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindVertexArray(0);
-
-
-
-
 	glutSwapBuffers(); // Instead of double buffering.
+	
+
+
+
 
 }
 
@@ -460,16 +438,29 @@ main(int argc, char** argv)
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE);
 	glutInitWindowSize(768, 768);
+	glutInitWindowPosition(0,0);
+
 	glutCreateWindow("Liu Beining 101193350");
+	glewExperimental = true;
 	glewInit();	//Initializes the glew and prepares the drawing pipeline.
+
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+	glFrontFace(GL_CW);
+	glCullFace(GL_BACK);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glutDisplayFunc(display);
+	glutKeyboardFunc(keyDown);
+	glutIdleFunc(idle);
 	init();
 
 
 
 
-	glutDisplayFunc(display);
-	glutIdleFunc(idle);
-	glutKeyboardFunc(keyDown);
 
 
 	glutMainLoop();

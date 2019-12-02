@@ -3,7 +3,12 @@
 #include <iostream>
 using namespace std;
 
-// List
+
+
+
+
+
+
 template <class T>
 class PriorityQueue
 {
@@ -22,12 +27,11 @@ public:
     // Push according to the priority
     void push(T val, int prio)
     {
-        if (m_elements.GetSize() < m_size)
-        {
-            m_elements.Push(val, prio);
-        }
+        m_elements.Push(val, prio);
+
     }
-    
+
+
     // Pop the first element
     void pop()
     {
@@ -66,6 +70,13 @@ public:
         assert(size > 0);
         m_size = size;
     }
+    void PrintInfo(){
+        m_elements.GetInfo();
+    }
+
+
+
+
 
 private:
     LinkList<T> m_elements; // Link List
