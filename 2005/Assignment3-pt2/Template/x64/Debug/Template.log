@@ -1,0 +1,21 @@
+﻿  Cloud.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\gameobject.h(5): fatal error C1083: Cannot open include file: 'glm\vec2.hpp': No such file or directory
+  CollisionManager.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\gameobject.h(5): fatal error C1083: Cannot open include file: 'glm\vec2.hpp': No such file or directory
+  Game.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\game.h(9): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  GameObject.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\gameobject.h(5): fatal error C1083: Cannot open include file: 'glm\vec2.hpp': No such file or directory
+  Island.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\gameobject.h(5): fatal error C1083: Cannot open include file: 'glm\vec2.hpp': No such file or directory
+  main.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\main.cpp(13): fatal error C1083: Cannot open include file: 'GLEW\glew.h': No such file or directory
+  Ocean.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\gameobject.h(5): fatal error C1083: Cannot open include file: 'glm\vec2.hpp': No such file or directory
+  Player.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\gameobject.h(5): fatal error C1083: Cannot open include file: 'glm\vec2.hpp': No such file or directory
+  SoundManager.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\soundmanager.h(10): fatal error C1083: Cannot open include file: 'SDL_mixer.h': No such file or directory
+  TextureManager.cpp
+c:\users\tom\onedrive\documents\courses\game3001 - artificial intelligence\template v2\src\texturemanager.h(10): fatal error C1083: Cannot open include file: 'glm\vec2.hpp': No such file or directory
+  Generating Code...
