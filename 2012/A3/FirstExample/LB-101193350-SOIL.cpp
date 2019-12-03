@@ -184,18 +184,6 @@ void init(void)
 		0.65f, 0.65f, 0.65f,		// 23.
 	};
 
-	// Cube colors
-	GLfloat cube_colors[] = { 
-		1.0f, 0.0f, 0.0f,		
-		1.0f, 0.0f, 0.0f, 
-		0.0f, 0.0f, 1.0f,
-		0.0f, 0.0f, 1.0f,
-
-		0.0f, 1.0f, 1.0f,
-		0.0f, 1.0f, 1.0f,
-		0.0f, 1.0f, 0.0f,
-		0.0f, 1.0f, 0.0f,
-	};
 
 	// generate and bind Vertex Array Object
 	gVAO = 0;

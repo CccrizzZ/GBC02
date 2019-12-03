@@ -1,0 +1,161 @@
+#include "ship.h"
+#include "Game.h"
+#include "Util.h"
+#include "GLM/gtx/rotate_vector.hpp"
+#include "PlayScene.h"
+#include "GLM/gtx/string_cast.hpp"
+#include <iostream>
+using namespace std;
+
+Ship::Ship() :
+	m_maxSpeed(5.0f), m_currentDirection(0.0f), m_turnSpeed(2.0f), m_steerForce(0.1f), m_currentTile(NULL)
+{
+	TheTextureManager::Instance()->load("../Assets/textures/ship3.png",
+		"ship", TheGame::Instance()->getRenderer());
+
+	glm::vec2 size = TheTextureManager::Instance()->getTextureSize("ship");
+	setWidth(size.x);
+	setHeight(size.y);
+	setPosition(glm::vec2(0.0f, 0.0f));
+	setVelocity(glm::vec2(0.0f, 0.0f));
+	setAcceleration(glm::vec2(0.0f, 0.0f));
+	setIsColliding(false);
+	setType(GameObjectType::SHIP);
+	setState(State::IDLE);
+}
+
+
+Ship::~Ship()
+{
+}
+
+void Ship::draw()
+{
+	int xComponent = getPosition().x;
+	int yComponent = getPosition().y;
+
+	TheTextureManager::Instance()->draw("ship", xComponent, yComponent,
+		TheGame::Instance()->getRenderer(), m_currentDirection, 255, true);
+}
+
+void Ship::m_checkState()
+{
+	switch (getState())
+	{
+	case State::IDLE:
+		move();
+		break;
+	case State::SEEK:
+		m_seek();
+		//move();
+		break;
+	case State::ARRIVE:
+		break;
+	case State::AVOID:
+		break;
+	case State::FLEE:
+		break;
+	}
+}
+
+void Ship::update()
+{
+	move();
+	m_checkBounds();
+	
+}
+
+void Ship::clean()
+{
+	delete m_currentTile;
+	m_currentTile = NULL;
+}
+
+void Ship::turnRight()
+{
+	m_currentDirection += m_turnSpeed;
+	if (m_currentDirection >= 360) 
+	{
+		m_currentDirection = 0;
+	}
+
+}
+
+void Ship::turnLeft()
+{
+	m_currentDirection -= m_turnSpeed;
+	if (m_currentDirection < 0)
+	{
+		m_currentDirection = 359.0;
+	}
+}
+
+void Ship::move()
+{
+
+
+}
+
+Tile * Ship::getTile()
+{
+	return m_currentTile;
+}
+
+void Ship::setTile(Tile* newTile)
+{
+	m_currentTile = newTile;
+}
+
+glm::vec2 Ship::getTarget()
+{
+	return m_target;
+}
+
+void Ship::setTarget(glm::vec2 position)
+{
+	m_target = position;
+}
+
+
+void Ship::m_checkBounds()
+{
+
+	if (getPosition().x > Config::SCREEN_WIDTH - getWidth() / 2)
+	{
+		setPosition(glm::vec2(800.0f - getWidth()/2, getPosition().y));
+	}
+
+	if (getPosition().x < 0 + getWidth() / 2)
+	{
+		setPosition(glm::vec2(0.0f + getWidth() / 2, getPosition().y));
+	}
+
+	if (getPosition().y > Config::SCREEN_HEIGHT - getHeight() / 2)
+	{
+		setPosition(glm::vec2(getPosition().x, 600.0f - getHeight()/2));
+	}
+
+	if (getPosition().y < 0 + getHeight() / 2)
+	{
+		setPosition(glm::vec2(getPosition().x, 0.0f + getHeight() / 2));
+	}
+
+}
+
+void Ship::m_reset()
+{
+	setIsColliding(false);
+	int halfWidth = getWidth() * 0.5;
+	int xComponent = rand() % (640 - getWidth()) + halfWidth + 1;
+	int yComponent = -getHeight();
+	setPosition(glm::vec2(xComponent, yComponent));
+}
+
+void Ship::m_seek()
+{
+	glm::vec2 desired = Util::normalize(m_target - getPosition()) * m_maxSpeed;
+	glm::vec2 steer = (desired - getVelocity());
+
+	steer = Util::limitMagnitude(steer, m_steerForce);
+	setAcceleration(steer);
+}
