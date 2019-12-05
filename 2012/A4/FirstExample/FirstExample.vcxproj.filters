@@ -18,16 +18,16 @@
     <ClCompile Include="LoadShaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LB-101193350-Assignment4.cpp">
+    <ClCompile Include="TrianglesUnwrap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="triangles.vert">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="triangles.frag">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="triangles.vert">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
