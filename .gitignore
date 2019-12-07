@@ -31,4 +31,5 @@
 *.vs
 *.vscode
 *.sdf
+*.db
 *.VC
