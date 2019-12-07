@@ -1,3 +1,8 @@
 ﻿  LB-101193350-Assignment2.cpp
-c:\users\crizz\desktop\a2\firstexample\box.h(104): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  FirstExample.vcxproj -> C:\Users\crizz\Desktop\A2\Debug\FirstExample.exe
+c:\users\crizz\desktop\gbc02\2012\final\firstexample\box.h(127): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\crizz\desktop\gbc02\2012\final\firstexample\box.h(134): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\crizz\desktop\gbc02\2012\final\firstexample\box.h(135): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\crizz\desktop\gbc02\2012\final\firstexample\box.h(136): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\crizz\desktop\gbc02\2012\final\firstexample\lb-101193350-assignment2.cpp(102): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2012\final\firstexample\lb-101193350-assignment2.cpp(144): warning C4018: '<': signed/unsigned mismatch
+  FirstExample.vcxproj -> C:\Users\crizz\Desktop\GBC02\2012\Final\Debug\FirstExample.exe

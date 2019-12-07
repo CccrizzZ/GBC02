@@ -59,24 +59,18 @@ public:
 
         // Cube indicies
         GLshort cube_indices[] = {
-            // Front.
-            3, 2, 1, 0,
-            // Left.
-            0, 3, 7, 4,
-            // Bottom.
-            4, 0, 1, 5,
-            // Right.
-            5, 1, 2, 6,
-            // Back.
-            6, 5, 4, 7,
-            // Top.
-            7, 6, 2, 3
+            0,1,2,3,
+            4,5,6,7,
+            8,9,10,11,
+            12,13,14,15,
+            16,17,18,19,
+            20,21,22,23
         };
 
 
         // Cube verticies
-        GLfloat cube_vertices[24];
-        for (int i = 0; i < 23; i++)
+        GLfloat cube_vertices[72];
+        for (int i = 0; i < 72; i++)
         {
             switch (i)
             {
@@ -84,14 +78,43 @@ public:
             case 1:
             case 4:
             case 9:
+
             case 12:
             case 13:
             case 14:
             case 16:
-            case 17:
+            case 17: 
             case 20:
             case 21:
             case 23:
+
+            case 24:
+            case 25:
+            case 27:
+            case 28:
+            case 29:
+            case 31:
+            case 32:
+            case 34:
+
+            case 36:
+            case 39:
+            case 41:
+            case 44:
+
+            case 48:
+            case 49:
+            case 50:
+            case 51:
+            case 52:
+            case 54:
+            case 57:
+            case 59:
+
+            case 61:
+            case 64:
+            case 65:
+            case 68:
                 cube_vertices[i] = -m_length;
                 break;
             default:
@@ -104,13 +127,13 @@ public:
         srand(time(NULL));
 
         // Cube colors
-        GLfloat cube_colors[24];
-        for (int i = 0; i < 23; i+=3)
+        GLfloat cube_colors[72];
+        for (int i = 0; i < 72; i+=3)
         {
 
-            float temp1 = (static_cast<float>(rand()) / static_cast<float>(1))/100000.0f;
-            float temp2 = (static_cast<float>(rand()) / static_cast<float>(1))/100000.0f;
-            float temp3 = (static_cast<float>(rand()) / static_cast<float>(1))/100000.0f;
+            float temp1 = 0.2 + (static_cast<float>(rand()) / static_cast<float>(1))/100000.0f;
+            float temp2 = 0.2 + (static_cast<float>(rand()) / static_cast<float>(1))/100000.0f;
+            float temp3 = 0.2 + (static_cast<float>(rand()) / static_cast<float>(1))/100000.0f;
 
             cube_colors[i] = temp1;
             cube_colors[i + 1] = temp2;
@@ -139,9 +162,10 @@ public:
 
 
     // display func
-    void displayBox(GLuint Mid ,glm::mat4 m, glm::mat4 v, glm::mat4 p)
+    void displayBox(GLuint& Mid ,glm::mat4& m, glm::mat4& v, glm::mat4& p)
     {
-        transformObject2(Mid,m,v,p,m_scale, m_rotationAxis, m_rotationAng, m_transition);
+        // m_rotationAng++;
+        transformObject2(Mid, m, v, p, m_scale, m_rotationAxis, m_rotationAng, m_transition);
         glDrawElements(GL_QUADS, 24, GL_UNSIGNED_SHORT, 0);
     }
 
@@ -149,7 +173,7 @@ public:
 
 
     // utility
-    void transformObject2(GLuint modelID, glm::mat4 mvp, glm::mat4 view, glm::mat4 projection, glm::vec3 scale, glm::vec3 rotationAxis, float rotationAngle, glm::vec3 translation)
+    void transformObject2(GLuint &modelID, glm::mat4 &mvp, glm::mat4 &view, glm::mat4 &projection, glm::vec3 scale, glm::vec3 rotationAxis, float rotationAngle, glm::vec3 translation)
     {
         glm::mat4 Model;
         Model = glm::mat4(1.0f);

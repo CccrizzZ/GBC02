@@ -31,7 +31,7 @@ enum Attrib_IDs { vPosition = 0 };
 
 
 // Horizontal and vertical ortho offsets.
-float posX, posY, posZ = 2.0f, scrollSpd = 0.25f;
+float posX = 0.0f , posY = -25.0f, posZ = 10.0f , scrollSpd = 0.25f;
 float rotang = 0;
 
 glm::mat4 mvp;
@@ -41,9 +41,9 @@ glm::mat4 projection;
 GLuint gVAO;		// Vertex Array Object
 GLuint modelID;
 
-vector<Box*> VBox;
+// vector for all boxes
+vector<Box*> Boxes;
 
-Box *b1 = new Box(1.0f, rotang, glm::vec3(1.0f), Z_AXIS, glm::vec3(0.0f, 0.0f, -10.0f));
 
 
 
@@ -66,15 +66,6 @@ void init(void)
 
 	modelID = glGetUniformLocation(program, "mvp");
 
-	// in world coordinates
-	projection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 0.0f, 100.0f); 
-
-	// Camera matrix
-	view = glm::lookAt(
-		glm::vec3(posX, posY, posZ),		// Camera pos in World Space
-		glm::vec3(0, 0, 0),		// and looks at the origin
-		glm::vec3(0, 1, 0)		// Head is up (set to 0,-1,0 to look upside-down)
-	);
 
 
 	// generate and bind Vertex Array Object
@@ -82,9 +73,37 @@ void init(void)
 	glGenVertexArrays(1, &gVAO);
 	glBindVertexArray(gVAO);
 	
+
+
+
+	// create boxes and push into vector // (len, ang, scale, rotaxis, transition)
+	Box *b1 = new Box(1.0f, 0.0f, glm::vec3(1.0f, 1.0f, 10.0f), Z_AXIS, glm::vec3(25.0f, 0.0f, 0.0f));
+	Boxes.push_back(b1);
+
+	Box *b2 = new Box(1.0f, 0.0f, glm::vec3(1.0f, 1.0f, 10.0f), Z_AXIS, glm::vec3(25.0f, 25.0f, 0.0f));
+	Boxes.push_back(b2);
+
+	Box *b3 = new Box(1.0f, 0.0f, glm::vec3(1.0f, 1.0f, 10.0f), Z_AXIS, glm::vec3(0.0f, 25.0f, 0.0f));
+	Boxes.push_back(b3);
+
+	Box *b4 = new Box(1.0f, 0.0f, glm::vec3(1.0f, 1.0f, 10.0f), Z_AXIS, glm::vec3(0.0f, 0.0f, 0.0f));
+	Boxes.push_back(b4);
+
+
+	Box *roof = new Box(1.0f, 0.0f, glm::vec3(25.0f, 25.0f, 1.0f), Z_AXIS, glm::vec3(12.5f, 12.5f, 10.0f));
+	Boxes.push_back(roof);
+
+
+	Box *Ground = new Box(1.0f, rotang, glm::vec3(150.0f, 150.0f, 0.1f), Z_AXIS, glm::vec3(0.0f, 0.0f, -5.0f));
+	Boxes.push_back(Ground);
+
+
+	// init the box in the vector
+	for (int i = 0; i < Boxes.size(); i++)
+	{
+		Boxes[i]->initBox();
+	}
 	
-	// init the box
-	b1->initBox();
 
 
 	// Enable depth test
@@ -103,9 +122,9 @@ void
 display(void)
 {
 	view = glm::lookAt(
-		glm::vec3(posX, posY, posZ),		// Camera pos in World Space
-		glm::vec3(posX, posY, 0),		// and looks at the origin
-		glm::vec3(0, 1, 0)		// Head is up (set to 0,-1,0 to look upside-down)
+		glm::vec3(posX, posY, posZ), // Camera pos in World Space
+		glm::vec3(posX, 0, 0),	// and looks at the origin
+		glm::vec3(0, -1, 0)			 // Head is up
 	);
 
 	// Clear buffers
@@ -115,14 +134,19 @@ display(void)
 	glClearColor(0.0f, 0.5f, 0.5f, 0.0f);
 
 	// Set Camera Projection
-	projection = glm::perspective(30.0f, (GLfloat)1.0f, 1.0f, 50.0f);
+	projection = glm::perspective(30.0f, (GLfloat)1.0f, 1.0f, 150.0f);
 
 	glBindVertexArray(gVAO);
-	
 
-	// display the box
-	b1->displayBox(modelID,mvp, view, projection);
-	rotang += 1.0f;
+	rotang++;
+
+	// init the boxes in the vector
+	for (int i = 0; i < Boxes.size(); i++)
+	{
+		Boxes[i]->displayBox(modelID,mvp, view, projection);
+	}
+
+
 
 	glutSwapBuffers(); // Instead of double buffering.
 }
@@ -134,22 +158,22 @@ void keyDown(unsigned char key, int x, int y)
 	switch(key)
 	{
 		case 'w':
-			posZ -= 0.1f;
+			posY += 0.5f;
 		break;
 		case 's':
-			posZ += 0.1f;
+			posY -= 0.5f;
 		break;
 		case 'a':
-			posX += 0.1f;
+			posX -= 0.5f;
 		break;
 		case 'd':
-			posX -= 0.1f;
+			posX += 0.5f;
 		break;
 		case 'r':
-			posY -= 0.1f;
+			posZ += 0.5f;
 		break;
 		case 'f':
-			posY += 0.1f;
+			posZ -= 0.5f;
 		break;
 	}
 
