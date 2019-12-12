@@ -1,0 +1,26 @@
+{
+
+"images": [
+    "heroWalkSheet.png"
+],
+
+"framerate": 20,
+"frames": [
+    [0, 0, 90, 100, 0, 45, 50],
+    [90, 0, 90, 100, 0, 45, 50],
+    [180, 0, 90, 100, 0, 45, 50],
+    [270, 0, 90, 100, 0, 45, 50],
+    [360, 0, 90, 100, 0, 45, 50],
+    [450, 0, 90, 100, 0, 45, 50]
+],
+
+"animations": {
+    "walk": { "frames": [0, 1, 2, 3, 4, 5] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:0820c3f6fb878d34bd81f6f8e508f92e:1ffe4b1f295f2ffe89ea725082a639ab:6793a4cb99129474e5547a2340980224$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

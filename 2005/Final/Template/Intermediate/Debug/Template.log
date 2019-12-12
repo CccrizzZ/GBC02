@@ -1,0 +1,24 @@
+﻿  SoundManager.cpp
+  StartScene.cpp
+c:\users\101193350\desktop\gbc02\2005\final\src\startscene.cpp(19): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\final\src\startscene.cpp(20): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\final\src\startscene.cpp(107): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\final\src\startscene.cpp(108): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+  Template.vcxproj -> C:\Users\101193350\Desktop\GBC02\2005\Final\bin\Debug\Template.exe

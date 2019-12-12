@@ -1,0 +1,23 @@
+{
+
+"images": [
+    "heroJumpSheet.png"
+],
+
+"framerate": 20,
+"frames": [
+    [0, 0, 90, 100, 0, 45, 50],
+    [90, 0, 90, 100, 0, 45, 50],
+    [180, 0, 90, 100, 0, 45, 50]
+],
+
+"animations": {
+    "jump": { "frames": [0, 1, 2] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:ed32ea0f111e16af906dcf93eb8605ad:d7e10f029e7d2a8e85903a9a45d81552:d97fe5c3a118784420ccf4fe8bc7c6cc$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

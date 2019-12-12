@@ -1,0 +1,24 @@
+{
+
+"images": [
+    "heroIdleSheet.png"
+],
+
+"framerate": 20,
+"frames": [
+    [0, 0, 90, 100, 0, 45, 50],
+    [90, 0, 90, 100, 0, 45, 50],
+    [180, 0, 90, 100, 0, 45, 50],
+    [270, 0, 90, 100, 0, 45, 50]
+],
+
+"animations": {
+    "idle": { "frames": [0, 1, 2, 3] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:afe8cbe65d886cd9750d69c8e6f7b7db:d6bfa837247cca5081fefd13cd779065:785f693edaa2b76061de5fe3b2f602a0$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}
