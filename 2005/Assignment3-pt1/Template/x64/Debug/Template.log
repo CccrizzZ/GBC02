@@ -1,32 +1,286 @@
-﻿imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_CreateRGBSurfaceFrom referenced in function "void __cdecl ImGuiSDL::Initialize(struct SDL_Renderer *,int,int)" (?Initialize@ImGuiSDL@@YAXPEAUSDL_Renderer@@HH@Z)
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: __cdecl `anonymous namespace'::Texture::~Texture(void)" (??1Texture@?A0xaa3519b3@@QEAA@XZ)
+﻿  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_widgets.cpp
+  imgui_sdl.cpp
+  Ball.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\ball.cpp(18): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\ball.cpp(19): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\ball.cpp(34): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\ball.cpp(35): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  CollisionManager.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\collisionmanager.cpp(7): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\collisionmanager.cpp(8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  DisplayObject.cpp
+  EndScene.cpp
+  FontManager.cpp
+  Game.cpp
+  GameObject.cpp
+  Label.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\label.cpp(16): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\label.cpp(17): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\label.cpp(28): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\label.cpp(29): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\label.cpp(54): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\label.cpp(55): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\label.cpp(75): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\label.cpp(76): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  main.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\main.cpp(28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Mine.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\mine.cpp(11): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\mine.cpp(12): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\mine.cpp(24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\mine.cpp(25): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Planet.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\planet.cpp(11): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\planet.cpp(12): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\planet.cpp(24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\planet.cpp(25): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  PlayScene.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\playscene.cpp(838): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\playscene.cpp(839): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Scene.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\scene.cpp(32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  ship.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\ship.cpp(17): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\ship.cpp(18): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\ship.cpp(34): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\ship.cpp(35): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\ship.cpp(148): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  SoundManager.cpp
+  Generating Code...
+  Compiling...
+  StartScene.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\startscene.cpp(126): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\startscene.cpp(127): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Target.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\target.cpp(10): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\target.cpp(11): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\target.cpp(24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\target.cpp(25): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  TextureManager.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(65): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(66): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(109): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(110): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(152): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(153): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(196): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(197): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(226): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(227): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(246): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(247): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\texturemanager.cpp(286): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Tile.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\tile.cpp(18): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\tile.cpp(19): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\tile.cpp(46): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\tile.cpp(47): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\tile.cpp(173): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Util.cpp
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\util.cpp(223): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\util.cpp(224): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\101193350\desktop\gbc02\2005\assignment3-pt1\src\util.cpp(240): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_CreateRGBSurfaceFrom referenced in function "void __cdecl ImGuiSDL::Initialize(struct SDL_Renderer *,int,int)" (?Initialize@ImGuiSDL@@YAXPEAUSDL_Renderer@@HH@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_FreeSurface referenced in function "public: __cdecl `anonymous namespace'::Texture::~Texture(void)" (??1Texture@?A0xdc2b98db@@QEAA@XZ)
 FontManager.obj : error LNK2001: unresolved external symbol SDL_FreeSurface
 TextureManager.obj : error LNK2001: unresolved external symbol SDL_FreeSurface
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_CreateTexture referenced in function "public: struct SDL_Texture * __cdecl `anonymous namespace'::Device::MakeTexture(int,int)" (?MakeTexture@Device@?A0xaa3519b3@@QEAAPEAUSDL_Texture@@HH@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_CreateTexture referenced in function "public: struct SDL_Texture * __cdecl `anonymous namespace'::Device::MakeTexture(int,int)" (?MakeTexture@Device@?A0xdc2b98db@@QEAAPEAUSDL_Texture@@HH@Z)
 imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_CreateTextureFromSurface referenced in function "void __cdecl ImGuiSDL::Initialize(struct SDL_Renderer *,int,int)" (?Initialize@ImGuiSDL@@YAXPEAUSDL_Renderer@@HH@Z)
 FontManager.obj : error LNK2001: unresolved external symbol SDL_CreateTextureFromSurface
 TextureManager.obj : error LNK2001: unresolved external symbol SDL_CreateTextureFromSurface
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_QueryTexture referenced in function "void __cdecl `anonymous namespace'::DrawRectangle(struct A0xaa3519b3::Rect const &,struct SDL_Texture *,struct A0xaa3519b3::Color const &,bool,bool)" (?DrawRectangle@?A0xaa3519b3@@YAXAEBURect@1@PEAUSDL_Texture@@AEBUColor@1@_N3@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_QueryTexture referenced in function "void __cdecl `anonymous namespace'::DrawRectangle(struct A0xdc2b98db::Rect const &,struct SDL_Texture *,struct A0xdc2b98db::Color const &,bool,bool)" (?DrawRectangle@?A0xdc2b98db@@YAXAEBURect@1@PEAUSDL_Texture@@AEBUColor@1@_N3@Z)
 TextureManager.obj : error LNK2001: unresolved external symbol SDL_QueryTexture
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_SetTextureColorMod referenced in function "void __cdecl `anonymous namespace'::DrawRectangle(struct A0xaa3519b3::Rect const &,struct SDL_Texture *,int,int,struct A0xaa3519b3::Color const &,bool,bool)" (?DrawRectangle@?A0xaa3519b3@@YAXAEBURect@1@PEAUSDL_Texture@@HHAEBUColor@1@_N3@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_SetTextureColorMod referenced in function "void __cdecl `anonymous namespace'::DrawRectangle(struct A0xdc2b98db::Rect const &,struct SDL_Texture *,int,int,struct A0xdc2b98db::Color const &,bool,bool)" (?DrawRectangle@?A0xdc2b98db@@YAXAEBURect@1@PEAUSDL_Texture@@HHAEBUColor@1@_N3@Z)
 TextureManager.obj : error LNK2001: unresolved external symbol SDL_SetTextureColorMod
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_SetTextureBlendMode referenced in function "public: struct SDL_Texture * __cdecl `anonymous namespace'::Device::MakeTexture(int,int)" (?MakeTexture@Device@?A0xaa3519b3@@QEAAPEAUSDL_Texture@@HH@Z)
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_SetRenderTarget referenced in function "public: void __cdecl `anonymous namespace'::Device::UseAsRenderTarget(struct SDL_Texture *)" (?UseAsRenderTarget@Device@?A0xaa3519b3@@QEAAXPEAUSDL_Texture@@@Z)
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderSetClipRect referenced in function "public: void __cdecl `anonymous namespace'::Device::DisableClip(void)" (?DisableClip@Device@?A0xaa3519b3@@QEAAXXZ)
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_SetRenderDrawColor referenced in function "public: void __cdecl `anonymous namespace'::Color::UseAsDrawColor(struct SDL_Renderer *)const " (?UseAsDrawColor@Color@?A0xaa3519b3@@QEBAXPEAUSDL_Renderer@@@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_SetTextureBlendMode referenced in function "public: struct SDL_Texture * __cdecl `anonymous namespace'::Device::MakeTexture(int,int)" (?MakeTexture@Device@?A0xdc2b98db@@QEAAPEAUSDL_Texture@@HH@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_SetRenderTarget referenced in function "public: void __cdecl `anonymous namespace'::Device::UseAsRenderTarget(struct SDL_Texture *)" (?UseAsRenderTarget@Device@?A0xdc2b98db@@QEAAXPEAUSDL_Texture@@@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderSetClipRect referenced in function "public: void __cdecl `anonymous namespace'::Device::DisableClip(void)" (?DisableClip@Device@?A0xdc2b98db@@QEAAXXZ)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_SetRenderDrawColor referenced in function "public: void __cdecl `anonymous namespace'::Color::UseAsDrawColor(struct SDL_Renderer *)const " (?UseAsDrawColor@Color@?A0xdc2b98db@@QEBAXPEAUSDL_Renderer@@@Z)
 Game.obj : error LNK2001: unresolved external symbol SDL_SetRenderDrawColor
 PlayScene.obj : error LNK2001: unresolved external symbol SDL_SetRenderDrawColor
 StartScene.obj : error LNK2001: unresolved external symbol SDL_SetRenderDrawColor
 imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_SetRenderDrawBlendMode referenced in function "void __cdecl ImGuiSDL::Render(struct ImDrawData *)" (?Render@ImGuiSDL@@YAXPEAUImDrawData@@@Z)
 imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_GetRenderDrawBlendMode referenced in function "void __cdecl ImGuiSDL::Render(struct ImDrawData *)" (?Render@ImGuiSDL@@YAXPEAUImDrawData@@@Z)
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderClear referenced in function "public: void __cdecl `anonymous namespace'::Device::UseAsRenderTarget(struct SDL_Texture *)" (?UseAsRenderTarget@Device@?A0xaa3519b3@@QEAAXPEAUSDL_Texture@@@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderClear referenced in function "public: void __cdecl `anonymous namespace'::Device::UseAsRenderTarget(struct SDL_Texture *)" (?UseAsRenderTarget@Device@?A0xdc2b98db@@QEAAXPEAUSDL_Texture@@@Z)
 Game.obj : error LNK2001: unresolved external symbol SDL_RenderClear
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderDrawPoint referenced in function "public: void __cdecl `anonymous namespace'::Device::SetAt(int,int,struct A0xaa3519b3::Color const &)" (?SetAt@Device@?A0xaa3519b3@@QEAAXHHAEBUColor@2@@Z)
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderFillRect referenced in function "void __cdecl `anonymous namespace'::DrawRectangle(struct A0xaa3519b3::Rect const &,struct SDL_Texture *,int,int,struct A0xaa3519b3::Color const &,bool,bool)" (?DrawRectangle@?A0xaa3519b3@@YAXAEBURect@1@PEAUSDL_Texture@@HHAEBUColor@1@_N3@Z)
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderCopy referenced in function "void __cdecl `anonymous namespace'::DrawCachedTriangle(struct A0xaa3519b3::Device::TriangleCacheItem const &,struct A0xaa3519b3::FixedPointTriangleRenderInfo const &)" (?DrawCachedTriangle@?A0xaa3519b3@@YAXAEBUTriangleCacheItem@Device@1@AEBUFixedPointTriangleRenderInfo@1@@Z)
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderCopyEx referenced in function "void __cdecl `anonymous namespace'::DrawRectangle(struct A0xaa3519b3::Rect const &,struct SDL_Texture *,int,int,struct A0xaa3519b3::Color const &,bool,bool)" (?DrawRectangle@?A0xaa3519b3@@YAXAEBURect@1@PEAUSDL_Texture@@HHAEBUColor@1@_N3@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderDrawPoint referenced in function "public: void __cdecl `anonymous namespace'::Device::SetAt(int,int,struct A0xdc2b98db::Color const &)" (?SetAt@Device@?A0xdc2b98db@@QEAAXHHAEBUColor@2@@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderFillRect referenced in function "void __cdecl `anonymous namespace'::DrawRectangle(struct A0xdc2b98db::Rect const &,struct SDL_Texture *,int,int,struct A0xdc2b98db::Color const &,bool,bool)" (?DrawRectangle@?A0xdc2b98db@@YAXAEBURect@1@PEAUSDL_Texture@@HHAEBUColor@1@_N3@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderCopy referenced in function "void __cdecl `anonymous namespace'::DrawCachedTriangle(struct A0xdc2b98db::Device::TriangleCacheItem const &,struct A0xdc2b98db::FixedPointTriangleRenderInfo const &)" (?DrawCachedTriangle@?A0xdc2b98db@@YAXAEBUTriangleCacheItem@Device@1@AEBUFixedPointTriangleRenderInfo@1@@Z)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_RenderCopyEx referenced in function "void __cdecl `anonymous namespace'::DrawRectangle(struct A0xdc2b98db::Rect const &,struct SDL_Texture *,int,int,struct A0xdc2b98db::Color const &,bool,bool)" (?DrawRectangle@?A0xdc2b98db@@YAXAEBURect@1@PEAUSDL_Texture@@HHAEBUColor@1@_N3@Z)
 TextureManager.obj : error LNK2001: unresolved external symbol SDL_RenderCopyEx
-imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_DestroyTexture referenced in function "public: __cdecl `anonymous namespace'::Texture::~Texture(void)" (??1Texture@?A0xaa3519b3@@QEAA@XZ)
+imgui_sdl.obj : error LNK2019: unresolved external symbol SDL_DestroyTexture referenced in function "public: __cdecl `anonymous namespace'::Texture::~Texture(void)" (??1Texture@?A0xdc2b98db@@QEAA@XZ)
 TextureManager.obj : error LNK2001: unresolved external symbol SDL_DestroyTexture
 EndScene.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function "public: virtual void __cdecl EndScene::handleEvents(void)" (?handleEvents@EndScene@@UEAAXXZ)
 Game.obj : error LNK2001: unresolved external symbol SDL_PollEvent
@@ -64,13 +318,13 @@ SoundManager.obj : error LNK2019: unresolved external symbol Mix_CloseAudio refe
 TextureManager.obj : error LNK2019: unresolved external symbol SDL_SetTextureAlphaMod referenced in function "public: void __cdecl TextureManager::draw(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int,int,int,struct SDL_Renderer *,double,int,enum SDL_RendererFlip)" (?draw@TextureManager@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHHHPEAUSDL_Renderer@@NHW4SDL_RendererFlip@@@Z)
 TextureManager.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "public: bool __cdecl TextureManager::load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct SDL_Renderer *)" (?load@TextureManager@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0PEAUSDL_Renderer@@@Z)
 MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\lib\freeglut_static.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\lib\DevIL.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\lib\ILU.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\lib\glew32.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\lib\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\lib\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\lib\SDL2_image.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\lib\SDL2_mixer.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\lib\SDL2_ttf.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\101193350\Desktop\GBC02\2005\Lab2005\x64\Debug\Template.exe : fatal error LNK1120: 47 unresolved externals
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\lib\\freeglut_static.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\lib\\DevIL.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\lib\\ILU.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\lib\\glew32.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\lib\\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\lib\\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\lib\\SDL2_image.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\lib\\SDL2_mixer.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\lib\\SDL2_ttf.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\101193350\Desktop\GBC02\2005\Assignment3-pt1\x64\Debug\Template.exe : fatal error LNK1120: 47 unresolved externals
