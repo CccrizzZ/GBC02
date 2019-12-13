@@ -1,24 +1,486 @@
-﻿  SoundManager.cpp
-  StartScene.cpp
-c:\users\101193350\desktop\gbc02\2005\final\src\startscene.cpp(19): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+﻿  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_widgets.cpp
+  imgui_sdl.cpp
+  CollisionManager.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-c:\users\101193350\desktop\gbc02\2005\final\src\startscene.cpp(20): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(10): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-c:\users\101193350\desktop\gbc02\2005\final\src\startscene.cpp(107): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(202): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(212): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(219): warning C4244: 'initializing': conversion from 'const _Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(222): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(224): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(313): warning C4244: 'initializing': conversion from 'genType' to 'float', possible loss of data
+          with
+          [
+              genType=int
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(314): warning C4244: 'initializing': conversion from 'genType' to 'float', possible loss of data
+          with
+          [
+              genType=int
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\collisionmanager.cpp(316): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  DisplayObject.cpp
+  EndScene.cpp
+  FontManager.cpp
+  Game.cpp
+  GameObject.cpp
+  Hero.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\hero.cpp(10): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-c:\users\101193350\desktop\gbc02\2005\final\src\startscene.cpp(108): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\hero.cpp(11): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
+c:\users\crizz\desktop\gbc02\2005\final\src\hero.cpp(24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\hero.cpp(25): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Label.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\label.cpp(16): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\label.cpp(17): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\label.cpp(28): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\label.cpp(29): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\label.cpp(54): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\label.cpp(55): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\label.cpp(75): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\label.cpp(76): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  main.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\main.cpp(28): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Mine.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\mine.cpp(11): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\mine.cpp(12): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\mine.cpp(24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\mine.cpp(25): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Planet.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\planet.cpp(11): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\planet.cpp(12): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\planet.cpp(24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\planet.cpp(25): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Platform.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\platform.cpp(10): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\platform.cpp(11): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\platform.cpp(23): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\platform.cpp(24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  PlayScene.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(214): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(310): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(312): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(354): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(356): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(371): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(373): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(382): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(384): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(570): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(572): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(585): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(587): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(600): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(602): warning C4018: '<': signed/unsigned mismatch
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(838): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\playscene.cpp(839): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Scene.cpp
+  ship.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\ship.cpp(20): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\ship.cpp(21): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\ship.cpp(40): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\ship.cpp(41): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\ship.cpp(136): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\ship.cpp(137): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\ship.cpp(169): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   Generating Code...
-  Template.vcxproj -> C:\Users\101193350\Desktop\GBC02\2005\Final\bin\Debug\Template.exe
+  Compiling...
+  SoundManager.cpp
+  StartScene.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\startscene.cpp(19): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\startscene.cpp(20): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\startscene.cpp(107): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\startscene.cpp(108): warning C4244: '=': conversion from 'Sint32' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Target.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\target.cpp(11): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\target.cpp(12): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\target.cpp(25): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\target.cpp(26): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\target.cpp(60): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  TextureManager.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(65): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(66): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(109): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(110): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(152): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(153): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(196): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(197): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(226): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(227): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(246): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\texturemanager.cpp(247): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Tile.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\tile.cpp(18): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\tile.cpp(19): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\tile.cpp(46): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\tile.cpp(47): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\tile.cpp(173): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Util.cpp
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(227): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(228): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(244): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(269): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(270): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(271): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(272): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(277): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(283): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(284): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(285): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(286): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(289): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(290): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(303): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(304): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(305): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(306): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(311): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(325): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(326): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(327): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(328): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(332): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(333): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(334): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(335): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(339): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(340): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(341): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(342): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(346): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(347): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(348): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(349): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(353): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(354): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(355): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(356): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(357): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(358): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(359): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(360): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(387): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(388): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(393): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(403): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\crizz\desktop\gbc02\2005\final\src\util.cpp(412): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Template.vcxproj -> C:\Users\crizz\Desktop\GBC02\2005\Final\bin\Debug\Template.exe
